@@ -14,14 +14,14 @@ export const Navigation = () => {
                     onClick={() => {setShowMenu(!showMenu)}}
                 />   
             </span> 
-            {showMenu && 
-                <div className='menu-bar'>
-                    <span>Option 1</span>
-                    <span>Option 2</span>
-                    <span>Option 3</span>
-                    <span>Option 4</span>
-                </div>
-            }
+            <div className={`menu-bar ${showMenu ? 'show-menu' : ''}`}>
+                <ul>
+                    <li>Option 1</li>
+                    <li>Option 2</li>
+                    <li>Option 3</li>
+                    <li>Option 4</li>
+                </ul>
+            </div>
         </nav>
     )
 }
