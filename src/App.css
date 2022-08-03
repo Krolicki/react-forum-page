@@ -56,7 +56,8 @@ nav .menu-bar{
   font-size: 3rem;
   line-height: 2;
   transform: translateX(100%);
-  transition: transform .5s ease-out;
+  opacity: 0;
+  transition: transform .8s cubic-bezier(0,.96,.23,.98), opacity .8s cubic-bezier(0,.96,.23,.98);
   
 }
 
@@ -78,4 +79,10 @@ nav .menu-bar ul{
 
 .show-menu{
   transform: translateX(0%) !important;
+  opacity: 1 !important;
+}
+
+.link{
+  color: white;
+  text-decoration: none;
 }
