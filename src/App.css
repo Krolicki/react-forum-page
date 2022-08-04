@@ -7,7 +7,15 @@ body{
 }
 
 .Container{
-  
+  display: unset;
+}
+
+.page{
+  padding: 2vmin;
+}
+
+.page h1{
+  margin-top: 0;
 }
 
 header{
