@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { Footer, Header, Content } from './Components';
-import { Home, About } from './Views';
+import { Footer, Header } from './Components';
+import { Home, About, Currency } from './Views';
 
 function App() {
   return (
@@ -14,6 +14,8 @@ function App() {
               <Route exact path='/' element={<Home />}>
               </Route>
               <Route path='/about' element={<About />}>
+              </Route>
+              <Route path='/currency/:code' element={<Currency />}>
               </Route>
             </Routes>
           </div>
