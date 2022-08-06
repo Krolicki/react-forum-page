@@ -7,7 +7,8 @@ body{
 }
 
 .Container{
-  display: unset;
+    position: relative;
+    min-height: 100vh;
 }
 
 .page{
@@ -39,7 +40,7 @@ footer{
   bottom: 0;
   left: 0;
   font-size: 1.5rem;
-  padding: 2vmin;
+  padding-block: 4vmin;
   background-color: rgb(55, 55, 55);
   color: white;
   text-align: center;
@@ -75,15 +76,16 @@ nav .menu-bar{
   
 }
 
-nav .menu-bar li{
+nav .menu-bar a{
   cursor: pointer;
   box-sizing: border-box;
-  padding: 0 6vw 0 18vw;
+  padding: 0 6vw 0 36vw;
   text-align: right;
   width: 100%;
   margin: 0;
+  display: inline-block;      
 }
-nav .menu-bar li:hover{
+nav .menu-bar a:hover{
   background-color: rgb(128, 128, 128);
 }
 nav .menu-bar ul{
