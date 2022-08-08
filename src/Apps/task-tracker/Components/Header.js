@@ -1,14 +1,14 @@
 import { Button } from "./Button"
 
-export const Header = () =>{
-    const clickEvent = () => {
-        console.log("click")
-    }
-    
-    return(
+export const Header = ({ onShow, showTask }) => {
+    return (
         <header>
             <h1>TaskTracker</h1>
-            <Button onClick={clickEvent} text="Add"/>
+            <Button
+                onClick={onShow}
+                text={showTask ? 'Close' : 'Add'}
+                color={showTask ? 'rgb(155, 19, 19)' : 'rgb(33, 155, 19)'}
+            />
         </header>
     )
 }
