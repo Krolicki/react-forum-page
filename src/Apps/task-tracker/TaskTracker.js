@@ -35,10 +35,21 @@ export const TaksTracker = () => {
 
     const toggleReminder = async (id) => {
         const taskToUpdate = await fetchTask(id)
+        const updatedTask = {...taskToUpdate, reminder: !taskToUpdate.reminder}
+
+        const response = await fetch(`http://localhost:5000/tasks/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type' : 'application/json'
+            },
+            body: JSON.stringify(updatedTask)
+        })
+
+        const data = await response.json()
 
         setTasks(tasks.map((task) => 
         task.id === id
-        ? {...task, reminder: !task.reminder} 
+        ? {...task, reminder: data.reminder} 
         : task
         ))
     }
