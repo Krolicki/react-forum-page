@@ -1,29 +1,41 @@
 import './TaskTracker.css'
 import { AddTask, Header, Tasks } from './Components'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const TaksTracker = () => {
     const [showAddTaskForm, setShowAddTaskForm] = useState(false)
-    const [tasks, setTasks] = useState([
-        {
-            id: 1,
-            text: 'task1',
-            day: '8 Sie 21:00',
-            reminder: true
-        },
-        {
-            id: 2,
-            text: 'task2',
-            day: '9 Sie 12:00',
-            reminder: false
-        }
-    ])
+    const [tasks, setTasks] = useState([])
 
-    const deleteTask= (id) => {
+    const fetchTasks = async () => {
+        const response = await fetch('http://localhost:5000/tasks')
+        const data = await response.json()
+
+        return(data)
+    }
+
+    const fetchTask = async (id) => {
+        const response = await fetch(`http://localhost:5000/tasks/${id}`)
+        const data = await response.json()
+
+        return(data)
+    }
+
+    useEffect(()=>{
+        const getTasks = async () => {
+            const tasksData = await fetchTasks()
+            setTasks(tasksData)
+        }
+        getTasks()
+    },[])
+
+    const deleteTask = async (id) => {
+        await fetch(`http://localhost:5000/tasks/${id}`, {method: 'DELETE'})
         setTasks(tasks.filter( (task) => task.id !== id))
     }
 
-    const toggleReminder= (id) => {
+    const toggleReminder = async (id) => {
+        const taskToUpdate = await fetchTask(id)
+
         setTasks(tasks.map((task) => 
         task.id === id
         ? {...task, reminder: !task.reminder} 
@@ -31,10 +43,20 @@ export const TaksTracker = () => {
         ))
     }
 
-    const addTask = (task) => {
-        const id = (tasks.length > 0) ? (tasks[tasks.length-1].id  +1) : 1
-        const newTask = {id, ...task}
-        setTasks([...tasks, newTask])
+    const addTask = async  (task) => {
+        const response = await fetch(`http://localhost:5000/tasks`, {
+            method: 'POST',
+            headers: {
+                'Content-type' : 'application/json'
+            },
+            body: JSON.stringify(task)
+        })
+
+        const data = await response.json()
+        //const id = (tasks.length > 0) ? (tasks[tasks.length-1].id  +1) : 1
+        //const newTask = {id, ...task}
+        //setTasks([...tasks, newTask])
+        setTasks([...tasks, data])
     }
 
     return(
