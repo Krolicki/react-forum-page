@@ -95,3 +95,13 @@ header h1{
     border-radius: 4px;
     cursor: pointer;
   }
+
+  footer{
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .about{
+    margin-left: 5vw;
+    margin-bottom: 50px;
+  }
