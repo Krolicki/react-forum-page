@@ -69,17 +69,18 @@ export const TaksTracker = () => {
         //const newTask = {id, ...task}
         //setTasks([...tasks, newTask])
         setTasks([...tasks, data])
+        setShowAddTaskForm(false)
     }
 
     return (
         <BrowserRouter>
-            <div>
+            <div className='container'>
                 <Header onShow={() => setShowAddTaskForm(!showAddTaskForm)} showTask={showAddTaskForm} />
 
                 <Routes>
                     <Route path='/' element={ 
                         <>
-                            {showAddTaskForm && <AddTask onAdd={addTask} />}
+                            { <AddTask onAdd={addTask} showForm = {showAddTaskForm} />}
                             {tasks.length > 0 ?
                                 <Tasks
                                     tasks={tasks}

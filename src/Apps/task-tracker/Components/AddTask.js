@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export const AddTask = ({onAdd}) => {
+export const AddTask = ({onAdd, showForm}) => {
 
     const [text, setText] = useState('')
     const [day, setDay] = useState('')
@@ -10,6 +10,7 @@ export const AddTask = ({onAdd}) => {
         e.preventDefault()
         if(!text){
             alert("Name cannot be empty")
+            return
         }
         onAdd({text, day, reminder})
         setText('')
@@ -19,7 +20,8 @@ export const AddTask = ({onAdd}) => {
 
 
     return(
-        <form className="add-form" onSubmit={onSubmit}>
+        <form className={`add-form  ${showForm && 'show-element'}`}  onSubmit={onSubmit}>
+            <div className="form-container">
             <div className="form-control">
                 <label>Task</label>
                 <input 
@@ -48,6 +50,7 @@ export const AddTask = ({onAdd}) => {
                 />
             </div>
             <input className="form-control submit-button" type="submit" value="Save" />
+            </div>
         </form>
     )
 }
