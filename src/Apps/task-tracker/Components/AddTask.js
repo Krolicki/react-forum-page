@@ -20,7 +20,7 @@ export const AddTask = ({onAdd, showForm}) => {
 
 
     return(
-        <form className={`add-form  ${showForm && 'show-element'}`}  onSubmit={onSubmit}>
+        <form   onSubmit={onSubmit}>
             <div className="form-container">
             <div className="form-control">
                 <label>Task</label>

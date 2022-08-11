@@ -4,7 +4,7 @@
       "id": 1,
       "text": "The task number 1",
       "day": "8 Sie 21:00",
-      "reminder": true
+      "reminder": false
     },
     {
       "id": 2,

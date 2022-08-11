@@ -1,6 +1,6 @@
 import './TaskTracker.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { AddTask, Footer, Header, Tasks, About } from './Components'
+import { AddTask, Footer, Header, Tasks, About, TaskDetails } from './Components'
 import { useEffect, useState } from 'react'
 
 export const TaksTracker = () => {
@@ -80,7 +80,9 @@ export const TaksTracker = () => {
                 <Routes>
                     <Route path='/' element={ 
                         <>
-                            { <AddTask onAdd={addTask} showForm = {showAddTaskForm} />}
+                            <div className={`add-form  ${showAddTaskForm && 'show-element'}`}>
+                            { <AddTask onAdd={addTask}  showForm = {showAddTaskForm} />}
+                            </div>
                             {tasks.length > 0 ?
                                 <Tasks
                                     tasks={tasks}
@@ -92,7 +94,7 @@ export const TaksTracker = () => {
                         </>
                     }></Route>
                     <Route path='/about' element={<About />}></Route>
-                    <Route path='/task/:id'></Route>
+                    <Route path='/task/:id' element={<TaskDetails />}></Route>
                 </Routes>
                 <Footer />
             </div>
