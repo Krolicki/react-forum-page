@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom/client';
 //import './index.css';
 //import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {TaksTracker} from './Apps/task-tracker/TaskTracker'
+//import {TaksTracker} from './Apps/task-tracker/TaskTracker'
+import {LandingPage} from './Apps'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TaksTracker />
+    <LandingPage />
   </React.StrictMode>
 );
 
