@@ -4,11 +4,11 @@ import './Slider.css'
 export const Slider = ({imgSrc, title, subtitle, flip}) => {
 
     const {ref, inView, entry} = useInView({
-        threshold: 0.4
+        threshold: 0.1
     })
 
     const renderContent = () => {
-        if(!flip){
+        if(!flip || window.innerWidth < 920){
             return(
                 <>
                     <img src={imgSrc} alt="image" className='slider-img' />

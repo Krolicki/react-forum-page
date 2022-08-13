@@ -1,5 +1,7 @@
 .slider{
     display: flex;
+    width: 80vw;
+    margin-inline: auto;
     align-items: center;
     margin-block: 100px;
     opacity: 0;
@@ -13,7 +15,7 @@
 }
 
 .slider-img{
-    width: 55%;
+    width: 45%;
 }
 
 .slider-content{
@@ -28,4 +30,20 @@
 
 .slider-title{
     text-align: center;
+}
+
+@media screen and (max-width: 920px){
+    .slider{
+        flex-direction: column;
+        background-color: rgb(217, 217, 217);
+        
+    }
+
+    .slider-img{
+        width: 100%;
+        
+    }
+    .slider-content{
+        padding: 80px 40px;
+    }
 }
