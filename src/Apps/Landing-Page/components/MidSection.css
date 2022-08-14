@@ -1,0 +1,38 @@
+.mid-section-container{
+    display: flex;
+    justify-content: space-around;
+    justify-content: center;
+}
+
+.mid-section-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10vmin;
+    text-align: center;
+    flex: 1;
+}
+
+.mid-card-icon{
+    margin-bottom: 20px;
+    height: 50%;
+}
+
+.mid-section-card h2{
+    margin-bottom: 20px;
+}
+
+.mid-section-card p{
+   height: 30%;
+}
+.mid-section-container > :nth-child(1) {
+    background: aliceblue;
+}
+.mid-section-container > :nth-child(2){
+    background: rgb(227, 240, 251);
+}
+.mid-section-container > :nth-child(3){
+    background: rgb(217, 235, 251);
+}
+
