@@ -7,6 +7,7 @@ import { Slider } from './components/Slider'
 import { Navbar } from './components/Navbar'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import { About } from './components/About'
+import { useState } from 'react'
 
 const navbarItems = [
     {url: "/", title:"Home"},
@@ -16,6 +17,7 @@ const navbarItems = [
 
 
 export const LandingPage = () => {
+
     return (
         <div>  
             <BrowserRouter >              

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './Navbar.css'
 import {FiX, FiMenu} from "react-icons/fi"
-import {Link} from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
 
 
 export const Navbar = ({navbarItems}) => {
@@ -10,7 +10,7 @@ export const Navbar = ({navbarItems}) => {
     const toggleMenuClick = () => {
         setMenuClick(!menuClick)
     }
-
+    const location = useLocation()
     return(
         <nav>
             <span className="logo">LandingPage</span>
@@ -22,7 +22,7 @@ export const Navbar = ({navbarItems}) => {
             <ul className={menuClick ? "show-menu" :  ""}>
                 {navbarItems.map((item) => {
                         return(
-                            <li className='navbar-item' key={item.title}>
+                            <li className={`navbar-item ${item.url===location.pathname ? "activeMenu" : ""}`} key={item.title}>
                                 <Link to={item.url} className='navbar-link'>
                                     {item.title}
                                 </Link>
