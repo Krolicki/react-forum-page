@@ -1,3 +1,93 @@
 .register-container{
     padding-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.register-form-wrapper{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5vmin;
+    max-width: 40vw;
+    max-height: 50vh;
+    background-color:rgb(198, 227, 253)
+}
+
+.register-form-wrapper h1{
+    margin-bottom: 20px;
+}
+
+.register-offscreen {
+    position: absolute;
+    left: -9999px;
+}
+
+.hide {
+    display: none;
+}
+
+.valid {
+    color: limegreen;
+    margin-left: 0.25rem;
+}
+
+.invalid {
+    color: red;
+    margin-left: 0.25rem;
+}
+
+.errmsg {
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.register-form-wrapper input[type="text"],
+.register-form-wrapper input[type="password"],
+.register-form-wrapper button,
+.register-form-wrapper textarea {
+  font-size: 18px;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-block: 5px;
+  width: 100%;
+}
+
+.instructions{
+    margin-block: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.754);
+    color: white;
+    padding: 10px;
+    border-radius: 0.5rem;
+}
+
+.instructions > svg{
+    margin-right: 6px;
+}
+
+.register-form-wrapper button{
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.register-link{
+    display: block;
+    margin-top: 5px;
+}
+
+.register-link a{
+    color: black;
+}
+
+.register-under{
+    margin-top: 10px;
 }
