@@ -41,12 +41,13 @@
     margin-left: 0.25rem;
 }
 
-.errmsg {
+.register-errmsg {
     background-color: lightpink;
     color: firebrick;
     font-weight: bold;
-    padding: 0.5rem;
+    padding: 1rem;
     margin-bottom: 0.5rem;
+    width: 100%;
 }
 
 .register-form-wrapper input[type="text"],

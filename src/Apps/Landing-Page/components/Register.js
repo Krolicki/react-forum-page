@@ -60,8 +60,28 @@ export const Register = () =>{
             return
         }
 
-        console.log(user, pwd)
-        setSuccess(true)
+        try{
+            const response = await fetch(`http://localhost:5000/users`, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({user, pwd})
+            })
+            const data = await response.json()
+            console.log(data)
+            setSuccess(true)
+        }
+        catch(err){
+            if(!err?.response){
+                setErrMsg("No server response")
+            }
+            else{
+                setErrMsg("Registration failed")
+            }
+            errRef.current.focus()
+        }
+
     }
 
     return (

@@ -12,5 +12,17 @@
       "day": "9 Sie 12:00",
       "reminder": false
     }
+  ],
+  "users": [
+    {
+      "user": "Q123",
+      "pwd": "zaq1@WSX",
+      "id": 1
+    },
+    {
+      "user": "W123",
+      "pwd": "zaq1@WSX",
+      "id": 2
+    }
   ]
 }
