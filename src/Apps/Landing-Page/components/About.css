@@ -6,7 +6,7 @@
     margin-top: 70px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 0 0 30vh 10vw;
 
@@ -21,8 +21,8 @@
 
 }
 
-p{
-    margin-inline: auto;
+.about-content{
+    padding-right: 10%;
 }
 
 .about-content h2{
@@ -31,4 +31,5 @@ p{
 
 .about-content p{
     line-height:  1.5em;
+    margin-inline: auto;
 }

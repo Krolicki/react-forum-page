@@ -3,11 +3,13 @@ import { Navbar } from './components/Navbar'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import { About } from './components/About'
 import { Home } from './components/Home'
+import { Register } from './components/Register'
 
 const navbarItems = [
     {url: "/", title:"Home"},
     {url: "/contact", title:"Contact"},
-    {url: "/about", title:"About"}
+    {url: "/about", title:"About"},
+    {url: "/register", title:"Login"},
 ]
 
 
@@ -28,6 +30,9 @@ export const LandingPage = () => {
                         <>
                            <a>Contact</a> 
                         </>
+                    } />
+                    <Route path="/register" element={
+                        <Register />
                     } />
                 </Routes>
             </BrowserRouter>
