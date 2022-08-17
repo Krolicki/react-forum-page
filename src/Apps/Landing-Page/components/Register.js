@@ -79,7 +79,7 @@ export const Register = () =>{
             else{
                 setErrMsg("Registration failed")
             }
-            errRef.current.focus()
+           // errRef.current.focus()
         }
 
     }
