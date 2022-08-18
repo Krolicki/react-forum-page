@@ -2,9 +2,10 @@ import { useEffect, useRef, useState, useContext } from 'react'
 import './Register.css'
 import { Link } from 'react-router-dom';
 import AuthContext from '../context/AuthProvider';
+import useLogin from '../hooks/useLogin';
 
 export const Login = () => {
-    const [userDataBase, setUserDataBase] = useState([]) // - FOR TESTING ONLY
+    const {login, loading, successLogin, error} = useLogin()
 
     const {setAuth} = useContext(AuthContext)
 
@@ -14,46 +15,30 @@ export const Login = () => {
     const [user, setUser] = useState('')
     const [pwd, setPwd] = useState('')
     const [errMsg, setErrMsg] = useState('')
-    const [success, setSuccess] = useState(false)
+    //const [success, setSuccess] = useState(false)
     
     useEffect(()=>{
         userRef.current.focus()
-
-        //for testing only
-        fetch('http://localhost:5000/users')
-            .then((response) => {
-                if(response.ok)
-                    return response
-                throw response
-            })
-            .then(response => response.json())
-            .then(response => {
-                console.log(response)
-                setUserDataBase(response)
-                //setLoading(false)
-            })
-            .catch(err=>{
-                setErrMsg(`Status: ${err.status}`)
-            })
+       
     },[])
 
     useEffect(()=>{
         setErrMsg('')
     },[user, pwd])
 
+    useEffect(()=>{
+        setErrMsg(error)
+    },[error])
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         //for testing only
-        userDataBase.map((userData)=>{
-            if(userData.user === user && userData.pwd === pwd){
-                setSuccess(true)
-            }
-        })
+        login(user, pwd)
     }
 
     return (
         <div className="register-container">
-        {success ? (
+        {successLogin ? (
             <div className='register-form-wrapper'>
                 <h1>Hello {user}!</h1>
                 <p>You are loggen in.</p>
@@ -64,6 +49,7 @@ export const Login = () => {
         ) : (
                 <div className='register-form-wrapper'>
                     <p ref={errRef} className={errMsg ? "register-errmsg" : "register-offscreen"} aria-live="assertive">{errMsg}</p>
+                    <div className={loading ? "loader-container" : "register-offscreen"}><span className={loading ? "loader" : "register-offscreen"} aria-live="assertive"></span></div>
                     <h1>Sign in</h1>
                     <form onSubmit={handleSubmit}>
                             <label htmlFor='username'>
