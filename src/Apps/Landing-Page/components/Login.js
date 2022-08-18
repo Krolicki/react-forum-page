@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState, useContext } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './Register.css'
 import { Link } from 'react-router-dom';
-import AuthContext from '../context/AuthProvider';
 import useLogin from '../hooks/useLogin';
+import useAuth from '../hooks/useAuth';
 
 export const Login = () => {
-    const {login, loading, successLogin, error} = useLogin()
+    const {login, loading, successLogin, error} = useLogin() //for testing
 
-    const {setAuth} = useContext(AuthContext)
+    const {setAuth} = useAuth()
 
     const userRef = useRef()
     const errRef = useRef()

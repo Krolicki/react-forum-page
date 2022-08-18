@@ -5,7 +5,8 @@ import { About } from './components/About'
 import { Home } from './components/Home'
 import { Register } from './components/Register'
 import { Login } from './components/Login'
-import { AuthProvider } from './context/AuthProvider'
+import AuthContext, { AuthProvider } from './context/AuthProvider'
+import { useContext, useEffect } from 'react'
 
 const navbarItems = [
     {url: "/", title:"Home"},
@@ -15,8 +16,9 @@ const navbarItems = [
 ]
 
 
-export const LandingPage = () => {
 
+
+export const LandingPage = () => {
     return (
         <div>
             <AuthProvider>

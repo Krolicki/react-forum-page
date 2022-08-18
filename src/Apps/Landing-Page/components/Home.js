@@ -4,8 +4,11 @@ import image1 from '../assets/1.jpg'
 import image2 from '../assets/2.jpg'
 import image3 from '../assets/3.jpg'
 import { MidSection } from "./MidSection"
+import useAuth from "../hooks/useAuth"
 
 export const Home = () => {
+    const {auth} = useAuth()
+    console.log(auth.user)
     return(
         <>
             <Hero imgSrc={image3} />

@@ -2,10 +2,12 @@ import { useState } from 'react'
 import './Navbar.css'
 import {FiX, FiMenu} from "react-icons/fi"
 import {Link, useLocation} from 'react-router-dom'
+import useAuth from '../hooks/useAuth'
 
 
 export const Navbar = ({navbarItems}) => {
     const[menuClick, setMenuClick] = useState(false)
+    const {auth} = useAuth()
 
     const toggleMenuClick = () => {
         setMenuClick(!menuClick)
@@ -30,6 +32,12 @@ export const Navbar = ({navbarItems}) => {
                         )
                     })
                 }
+            {auth.user !== undefined && 
+                <li className='navbar-item'>
+                    <Link to='/' className='navbar-link'>
+                        {auth.user}
+                    </Link>
+                </li>}
             </ul>
         </nav>
     )

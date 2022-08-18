@@ -1,4 +1,5 @@
 import { useState } from "react"
+import useAuth from "./useAuth"
 
 
 function useLogin(){ //FOR TESTING ONLY
@@ -6,11 +7,13 @@ function useLogin(){ //FOR TESTING ONLY
     const [loading, setLoading] = useState(false)
     const [error, setError] =  useState(null) 
     const [successLogin, setSuccessLogin] = useState(null)
+    const {setAuth} = useAuth()
 
     const auth = (user, pwd) => {
         userDataBase.map((userData)=>{
             if(userData.user === user && userData.pwd === pwd){
                 setSuccessLogin(true)
+                setAuth({user, pwd})
                 return
             }
         })
