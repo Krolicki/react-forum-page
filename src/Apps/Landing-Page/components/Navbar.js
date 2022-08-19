@@ -57,7 +57,12 @@ export const Navbar = ({navbarItems}) => {
                 className={`user-menu ${showUserMenu ? "show-user-menu" : ""}`}
                 onMouseLeave={()=>{setShowUserMenu(false)  }}   
             >
-                    <p onClick={ ()=> setAuth({}) }>Logout</p>
+                    <p onClick={ ()=> {
+                        setAuth({})
+                        setShowUserMenu(false) 
+                    }}> 
+                        Logout
+                    </p>
             </span>
         </nav>
     )

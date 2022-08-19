@@ -81,6 +81,9 @@ nav ul{
     text-align: center;
     opacity: 0;
     transition: opacity .3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.657);
+    line-height: 2.5em;
+
 }
 
 .user-menu p{
