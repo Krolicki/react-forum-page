@@ -5,9 +5,7 @@ import useLogin from '../hooks/useLogin';
 import useAuth from '../hooks/useAuth';
 
 export const Login = () => {
-    const {login, loading, successLogin, error} = useLogin() //for testing
-
-    const {setAuth} = useAuth()
+    const {login, loading, successLogin, error} = useLogin()
 
     const userRef = useRef()
     const errRef = useRef()
@@ -15,11 +13,9 @@ export const Login = () => {
     const [user, setUser] = useState('')
     const [pwd, setPwd] = useState('')
     const [errMsg, setErrMsg] = useState('')
-    //const [success, setSuccess] = useState(false)
     
     useEffect(()=>{
         userRef.current.focus()
-       
     },[])
 
     useEffect(()=>{
@@ -32,7 +28,6 @@ export const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        //for testing only
         login(user, pwd)
     }
 

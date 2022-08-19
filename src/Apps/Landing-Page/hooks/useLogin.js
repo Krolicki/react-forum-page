@@ -2,7 +2,7 @@ import { useState } from "react"
 import useAuth from "./useAuth"
 
 
-function useLogin(){ //FOR TESTING ONLY
+function useLogin(){
     const [loading, setLoading] = useState(false)
     const [error, setError] =  useState(null) 
     const [successLogin, setSuccessLogin] = useState(null)

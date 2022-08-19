@@ -2,8 +2,7 @@ nav{
     position: sticky;
     top: 0;
     height: 70px;
-    background-color: black;
-    opacity: .7;
+    background-color: rgba(0, 0, 0, 0.703);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,12 +20,16 @@ nav{
 nav ul{
     display: flex;
     list-style: none;
-
+    gap: 5px;
 }
 
 .navbar-item{
     white-space: nowrap;
     position: relative;
+}
+
+.navbar-item a{
+    margin: 0;
 }
 
 .navbar-link{
@@ -44,7 +47,8 @@ nav ul{
     position: absolute;
     bottom: -10px;
     left: 0;
-    width: 100%;
+    width: calc(100% + 5px);
+    transform: translateX(-2.5px);
     height: 2px;
     border: none;
     opacity: 0;
@@ -66,6 +70,27 @@ nav ul{
     cursor: pointer;
     display: none;
 }
+
+.user-menu{
+    position: fixed;
+    top:70px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.703);
+    color: white;
+    padding: 1.5em 3em;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.user-menu p{
+    cursor: pointer;
+}
+
+.show-user-menu{
+    opacity: 1;
+}
+
 
 @media screen and (max-width: 920px){
     .nav-icon{

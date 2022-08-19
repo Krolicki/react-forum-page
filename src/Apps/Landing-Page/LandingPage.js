@@ -11,8 +11,7 @@ import { useContext, useEffect } from 'react'
 const navbarItems = [
     {url: "/", title:"Home"},
     {url: "/contact", title:"Contact"},
-    {url: "/about", title:"About"},
-    {url: "/login", title:"Login"},
+    {url: "/about", title:"About"}
 ]
 
 
