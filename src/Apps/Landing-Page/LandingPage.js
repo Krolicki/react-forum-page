@@ -15,8 +15,6 @@ const navbarItems = [
 ]
 
 
-
-
 export const LandingPage = () => {
     return (
         <div>

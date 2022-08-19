@@ -1,4 +1,5 @@
 .register-container{
+    background-image: url('../assets/2.jpg');
     padding-top: 70px;
     display: flex;
     justify-content: center;
@@ -15,7 +16,8 @@
     align-items: flex-start;
     padding: 5vmin;
     max-width: 40vw;
-    background-color:rgb(198, 227, 253)
+    border-radius: 4px;
+    background-color:rgba(198, 227, 253, 0.89)
 }
 
 .register-form-wrapper h1{
@@ -108,6 +110,12 @@
     animation: loading-animation 1s ease-in-out infinite;
   }
   
+  @media screen and (max-width: 920px){
+    .register-form-wrapper{
+        max-width: 85vw;
+    }
+  }
+
   @keyframes loading-animation{
     from {
       transform: rotate(-45deg);
