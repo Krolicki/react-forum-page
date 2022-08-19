@@ -7,7 +7,7 @@ import useAuth from '../hooks/useAuth'
 
 export const Navbar = ({navbarItems}) => {
     const[menuClick, setMenuClick] = useState(false)
-    const {auth} = useAuth()
+    const {auth, setAuth} = useAuth()
 
     const toggleMenuClick = () => {
         setMenuClick(!menuClick)
@@ -34,7 +34,9 @@ export const Navbar = ({navbarItems}) => {
                 }
             {auth.user !== undefined && 
                 <li className='navbar-item'>
-                    <Link to='/' className='navbar-link'>
+                    <Link to='/' className='navbar-link' onClick={()=>{
+                        setAuth({})
+                    }}>
                         {auth.user}
                     </Link>
                 </li>}

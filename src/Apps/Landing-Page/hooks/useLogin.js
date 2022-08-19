@@ -3,27 +3,15 @@ import useAuth from "./useAuth"
 
 
 function useLogin(){ //FOR TESTING ONLY
-    const [userDataBase, setUserDataBase] = useState([]) 
     const [loading, setLoading] = useState(false)
     const [error, setError] =  useState(null) 
     const [successLogin, setSuccessLogin] = useState(null)
     const {setAuth} = useAuth()
 
-    const auth = (user, pwd) => {
-        userDataBase.map((userData)=>{
-            if(userData.user === user && userData.pwd === pwd){
-                setSuccessLogin(true)
-                setAuth({user, pwd})
-                return
-            }
-        })
-        setError("Wrong username or password")
-    }
-
-    const login = (user, pwd) => {
+    const login = async (user, pwd) => {
         setLoading(true)
         setError('')
-        fetch('http://localhost:5000/users')
+        await fetch(`http://localhost:5000/users/?user=${user}&pwd=${pwd}`)
             .then((response) => {
                 if(response.ok)
                     return response
@@ -31,8 +19,13 @@ function useLogin(){ //FOR TESTING ONLY
             })
             .then(response => response.json())
             .then(response => {
-                setUserDataBase(response)
-                auth(user,pwd)
+                if(response.length !== 0){
+                    setSuccessLogin(true)
+                    setAuth({user, pwd})
+                }
+                else{
+                    setError("Wrong username or password")
+                }
             })
             .catch(()=>{
                 setError(`No connection to server`)
