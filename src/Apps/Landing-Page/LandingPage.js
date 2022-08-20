@@ -1,12 +1,11 @@
 import './landingPage.css'
 import { Navbar } from './components/Navbar'
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom'
 import { About } from './components/About'
 import { Home } from './components/Home'
 import { Register } from './components/Register'
 import { Login } from './components/Login'
-import AuthContext, { AuthProvider } from './context/AuthProvider'
-import { useContext, useEffect } from 'react'
+import { AuthProvider } from './context/AuthProvider'
 
 const navbarItems = [
     {url: "/", title:"Home"},
@@ -30,7 +29,7 @@ export const LandingPage = () => {
                             } />
                             <Route path="/contact" element={
                                 <>
-                                <a>Contact</a> 
+                                <p>Contact</p> 
                                 </>
                             } />
                             <Route path="/register" element={

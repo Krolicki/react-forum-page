@@ -8,7 +8,7 @@ function useLogin(){
     const [successLogin, setSuccessLogin] = useState(null)
     const {setAuth} = useAuth()
 
-    const login = async (user, pwd) => {
+    const login = async (user, pwd, from) => {
         setLoading(true)
         setError('')
         await fetch(`http://localhost:5000/users/?user=${user}&pwd=${pwd}`)

@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import './Register.css'
 import { Link } from 'react-router-dom';
 import useLogin from '../hooks/useLogin';
-import useAuth from '../hooks/useAuth';
 
 export const Login = () => {
     const {login, loading, successLogin, error} = useLogin()

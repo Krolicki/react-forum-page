@@ -45,7 +45,7 @@ export const Navbar = ({navbarItems}) => {
                             </li>
                         </>
                     :
-                        <li className='navbar-item'>
+                        <li className={`navbar-item ${location.pathname === '/login' ? "activeMenu" : ""}`}>
                             <Link to='/login' className='navbar-link'>
                                 Login
                             </Link>

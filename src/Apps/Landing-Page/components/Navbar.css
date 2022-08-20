@@ -74,7 +74,7 @@ nav ul{
 .user-menu{
     position: fixed;
     top:70px;
-    right: 10px;
+    right: 2.5vw;
     background-color: rgba(0, 0, 0, 0.703);
     color: white;
     padding: 1.5em 3em;
@@ -89,6 +89,11 @@ nav ul{
 .user-menu p{
     cursor: pointer;
 }
+
+.user-link{
+    cursor: default;
+}
+
 
 .show-user-menu{
     opacity: 1;
