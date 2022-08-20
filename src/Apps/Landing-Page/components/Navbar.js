@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import './Navbar.css'
-import {FiX, FiMenu} from "react-icons/fi"
+import {FiX, FiMenu, FiArrowLeft} from "react-icons/fi"
 import {Link, useLocation} from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 
@@ -46,7 +46,7 @@ export const Navbar = ({navbarItems}) => {
                         </>
                     :
                         <li className={`navbar-item ${location.pathname === '/login' ? "activeMenu" : ""}`}>
-                            <Link to='/login' className='navbar-link'>
+                            <Link to='/login' className='navbar-link' onClick={toggleMenuClick}>
                                 Login
                             </Link>
                         </li>
@@ -57,6 +57,7 @@ export const Navbar = ({navbarItems}) => {
                 className={`user-menu ${showUserMenu ? "show-user-menu" : ""}`}
                 onMouseLeave={()=>{setShowUserMenu(false)  }}   
             >
+                    <FiArrowLeft size={25} className="close-user-menu" onClick={()=>setShowUserMenu(false)} />
                     <p onClick={ ()=> {
                         setAuth({})
                         setShowUserMenu(false) 

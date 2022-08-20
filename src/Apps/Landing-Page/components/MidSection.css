@@ -36,3 +36,9 @@
     background: rgb(217, 235, 251);
 }
 
+  
+@media screen and (max-width: 920px){
+    .mid-section-container{
+        flex-direction: column;
+    }
+  }
