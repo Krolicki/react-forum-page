@@ -6,6 +6,7 @@ import { Home } from './components/Home'
 import { Register } from './components/Register'
 import { Login } from './components/Login'
 import { AuthProvider } from './context/AuthProvider'
+import { Missing } from './components/Missing'
 
 const navbarItems = [
     {url: "/", title:"Home"},
@@ -38,6 +39,8 @@ export const LandingPage = () => {
                             <Route path="/login" element={
                                 <Login />
                             } />
+                            <Route path="*" element={
+                                <Missing />                            } />
                         </Routes>
                 </BrowserRouter>
             </AuthProvider>  
