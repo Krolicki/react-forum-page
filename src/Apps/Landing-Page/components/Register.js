@@ -57,15 +57,22 @@ export const Register = () =>{
         }
 
         try{
-            const response = await fetch(`http://localhost:5000/users`, {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json'
-                },
-                body: JSON.stringify({user, pwd})
-            })
-            const data = await response.json()
-            setSuccess(true)
+            const checkUsername = await fetch(`http://localhost:5000/users/?user=${user}`)
+                .then((response)=> {return response.json()})
+            if(checkUsername.length === 0){
+                const response = await fetch(`http://localhost:5000/users`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify({user, pwd})
+                })
+                const data = await response.json()
+                setSuccess(true)
+            }
+            else{
+                setErrMsg("This username is not available")
+            }
         }
         catch(err){
             if(!err?.response){
