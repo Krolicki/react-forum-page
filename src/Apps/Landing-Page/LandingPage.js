@@ -7,6 +7,9 @@ import { Register } from './components/Register'
 import { Login } from './components/Login'
 import { AuthProvider } from './context/AuthProvider'
 import { Missing } from './components/Missing'
+import { useCookies } from 'react-cookie'
+import useAuth from './hooks/useAuth'
+import { useEffect } from 'react'
 
 const navbarItems = [
     {url: "/", title:"Home"},
@@ -14,11 +17,22 @@ const navbarItems = [
     {url: "/about", title:"About"}
 ]
 
-
 export const LandingPage = () => {
+    const {auth, setAuth} = useAuth()
+    const [cookies] = useCookies()
+
+    const readCookies = () => {
+        let user = cookies.user
+        if(user)
+            setAuth({user})
+    }
+    
+    useEffect(()=>{
+        readCookies()
+    },[])
+
     return (
         <div>
-            <AuthProvider>
                 <BrowserRouter >              
                     <Navbar navbarItems={navbarItems}/>
                         <Routes>
@@ -42,8 +56,7 @@ export const LandingPage = () => {
                             <Route path="*" element={
                                 <Missing />                            } />
                         </Routes>
-                </BrowserRouter>
-            </AuthProvider>  
+                </BrowserRouter> 
         </div>
     )
 }

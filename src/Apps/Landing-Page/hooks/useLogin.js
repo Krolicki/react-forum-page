@@ -1,5 +1,6 @@
 import { useState } from "react"
 import useAuth from "./useAuth"
+import { useCookies } from 'react-cookie'
 
 
 function useLogin(){
@@ -7,6 +8,8 @@ function useLogin(){
     const [error, setError] =  useState(null) 
     const [successLogin, setSuccessLogin] = useState(null)
     const {setAuth} = useAuth()
+
+    const [cookies, setCookie] = useCookies(['user'])
 
     const login = async (user, pwd, from) => {
         setLoading(true)
@@ -22,6 +25,9 @@ function useLogin(){
                 if(response.length !== 0){
                     setSuccessLogin(true)
                     setAuth({user, pwd})
+                    let expires = new Date()
+                    expires.setTime(expires.getTime() + (10 * 60000)) // 10 minutes
+                    setCookie('user', user, { path: '/',  expires})
                 }
                 else{
                     setError("Wrong username or password")

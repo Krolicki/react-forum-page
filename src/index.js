@@ -5,11 +5,14 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 //import {TaksTracker} from './Apps/task-tracker/TaskTracker'
 import {LandingPage} from './Apps'
+import { AuthProvider } from './Apps/Landing-Page/context/AuthProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <LandingPage />
+    <AuthProvider>
+      <LandingPage />
+    </AuthProvider>
   </React.StrictMode>
 );
 

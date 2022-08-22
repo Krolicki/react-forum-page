@@ -3,12 +3,14 @@ import './Navbar.css'
 import {FiX, FiMenu, FiArrowLeft} from "react-icons/fi"
 import {Link, useLocation} from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
+import { useCookies } from 'react-cookie'
 
 
 export const Navbar = ({navbarItems}) => {
     const[menuClick, setMenuClick] = useState(false)
     const[showUserMenu, setShowUserMenu] = useState(false)
     const {auth, setAuth} = useAuth()
+    const [,, removeCookie] = useCookies(['user'])
 
     const userMenu =useRef()
 
@@ -61,6 +63,7 @@ export const Navbar = ({navbarItems}) => {
                     <p onClick={ ()=> {
                         setAuth({})
                         setShowUserMenu(false) 
+                        removeCookie("user", { path:"/" })
                     }}> 
                         Logout
                     </p>
