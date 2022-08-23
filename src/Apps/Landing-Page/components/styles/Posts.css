@@ -1,0 +1,40 @@
+.posts-container{
+    width: 100%;
+    padding-top: 70px;
+    display: flex;
+    align-items: flex-start;
+    padding-inline: 5vw;
+}
+
+.posts{
+    width: 70%;
+    margin-top: 10vh;
+}
+
+.post{
+    padding: 2%;
+    margin-bottom: 6vh;
+    background-color:rgb(195, 225, 251)
+}
+
+.post-head{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1%;
+}
+
+.post-head h2{
+    font-weight: 500;
+}
+
+.post-desc{
+    margin-bottom: 2%;
+}
+
+.post button{
+    padding: 12px;
+    cursor: pointer;
+    background-color:rgb(60, 69, 77);
+    color: white;
+    border: none;
+}

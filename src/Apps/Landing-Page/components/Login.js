@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import './Register.css'
+import './styles/Register.css'
 import { Link } from 'react-router-dom';
 import useLogin from '../hooks/useLogin';
 

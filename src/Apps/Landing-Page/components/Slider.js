@@ -1,5 +1,5 @@
 import { useInView } from 'react-intersection-observer'
-import './Slider.css'
+import './styles/Slider.css'
 
 export const Slider = ({imgSrc, title, subtitle, flip}) => {
 

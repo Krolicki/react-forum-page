@@ -10,9 +10,11 @@ import { Missing } from './components/Missing'
 import { useCookies } from 'react-cookie'
 import useAuth from './hooks/useAuth'
 import { useEffect } from 'react'
+import { Posts } from './components/Posts'
 
 const navbarItems = [
     {url: "/", title:"Home"},
+    {url: "/posts", title:"Posts"},
     {url: "/contact", title:"Contact"},
     {url: "/about", title:"About"}
 ]
@@ -39,6 +41,9 @@ export const LandingPage = () => {
                             <Route path="/" element={
                                 <Home />
                             } />
+                            <Route path="/posts" element={
+                                <Posts />
+                            } />
                             <Route path="/about" element={
                                 <About />
                             } />
@@ -54,7 +59,8 @@ export const LandingPage = () => {
                                 <Login />
                             } />
                             <Route path="*" element={
-                                <Missing />                            } />
+                                <Missing />                           
+                            } />
                         </Routes>
                 </BrowserRouter> 
         </div>

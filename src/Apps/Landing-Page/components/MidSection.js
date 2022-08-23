@@ -1,4 +1,4 @@
-import './MidSection.css'
+import './styles/MidSection.css'
 import {GiMountaintop} from "react-icons/gi"
 import { BiTrip } from "react-icons/bi"
 import { MdOutlineCardTravel} from "react-icons/md"

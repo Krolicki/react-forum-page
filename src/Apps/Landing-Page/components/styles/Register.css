@@ -1,5 +1,5 @@
 .register-container{
-    background-image: url('../assets/2.jpg');
+    background-image: url('../../assets/2.jpg');
     padding-top: 70px;
     display: flex;
     justify-content: center;

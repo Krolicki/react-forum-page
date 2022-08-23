@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import './Navbar.css'
+import './styles/Navbar.css'
 import {FiX, FiMenu, FiArrowLeft} from "react-icons/fi"
 import {Link, useLocation} from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
