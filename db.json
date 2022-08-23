@@ -34,5 +34,91 @@
       "pwd": "zaq1@WSX",
       "id": 4
     }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "Post 1",
+      "desc" : "Officia eiusmod ullamco ut ex.",
+      "date": "23-08-2022"
+    },
+    {
+      "id": 2,
+      "title": "Post 1",
+      "desc" : "Officia eiusmod ullamco ut ex.",
+      "date": "23-08-2022"
+    },
+    {
+      "id": 3,
+      "title": "Post 1",
+      "desc" : "Officia eiusmod ullamco ut ex.",
+      "date": "23-08-2022"
+    },
+    {
+      "id": 4,
+      "title": "Post 1",
+      "desc" : "Officia eiusmod ullamco ut ex.",
+      "date": "23-08-2022"
+    },
+    {
+      "id": 5,
+      "title": "Post 1",
+      "desc" : "Officia eiusmod ullamco ut ex.",
+      "date": "23-08-2022"
+    },
+    {
+      "id": 6,
+      "title": "Post 1",
+      "desc" : "Officia eiusmod ullamco ut ex.",
+      "date": "23-08-2022"
+    },
+    {
+      "id": 7,
+      "title": "Post 1",
+      "desc" : "Officia eiusmod ullamco ut ex.",
+      "date": "23-08-2022"
+    },
+    {
+      "id": 8,
+      "title": "Post 1",
+      "desc" : "Officia eiusmod ullamco ut ex.",
+      "date": "23-08-2022"
+    },
+    {
+      "id": 9,
+      "title": "Post 1",
+      "desc" : "Officia eiusmod ullamco ut ex.",
+      "date": "23-08-2022"
+    },
+    {
+      "id": 10,
+      "title": "Post 1",
+      "desc" : "Officia eiusmod ullamco ut ex.",
+      "date": "23-08-2022"
+    },
+    {
+      "id": 11,
+      "title": "Post 1",
+      "desc" : "Officia eiusmod ullamco ut ex.",
+      "date": "23-08-2022"
+    },
+    {
+      "id": 12,
+      "title": "Post 1",
+      "desc" : "Officia eiusmod ullamco ut ex.",
+      "date": "23-08-2022"
+    },
+    {
+      "id": 13,
+      "title": "Post 1",
+      "desc" : "Officia eiusmod ullamco ut ex.",
+      "date": "23-08-2022"
+    },
+    {
+      "id": 14,
+      "title": "Post 2",
+      "desc" : "Ullamco velit velit eu velit laborum eu magna in veniam nostrud labore.",
+      "date": "23-08-2022"
+    }
   ]
 }
