@@ -1,0 +1,35 @@
+.pages-container{
+    display: block;
+    position: relative;
+    width: 100%;
+    background-color: transparent;
+}
+
+.pages-list{
+    margin-inline: auto;
+    width: 100%;
+    list-style: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+}
+
+.page-number{
+    width: 2rem;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.page-link{
+    font-size: 2rem;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
+.active-page{
+    color:rgb(0, 48, 78);
+    text-decoration: underline;
+}

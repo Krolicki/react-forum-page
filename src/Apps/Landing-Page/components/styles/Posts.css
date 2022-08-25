@@ -1,13 +1,15 @@
 .posts-container{
-    width: 100%;
+    width: 70%;
     padding-top: 70px;
     display: flex;
     align-items: flex-start;
     padding-inline: 5vw;
+    margin-right: auto;
+    flex-direction: column;
 }
 
 .posts{
-    width: 70%;
+    width: 100%;
     margin-top: 10vh;
 }
 
