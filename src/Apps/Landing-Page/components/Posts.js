@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
+import { Pagination } from './Pagination'
 import './styles/Posts.css'
 
 export const Posts = () => {
     const [posts, setPosts] = useState([])
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurentPage] = useState(1)
-    const [postsPerPage, setPostPerPage] = useState(10)
+    const [postsPerPage, setPostPerPage] = useState(5)
 
     useEffect(()=>{
         const getPosts = async () => {
@@ -25,6 +26,10 @@ export const Posts = () => {
         getPosts()
     }, [])
 
+    const indexLastPost = currentPage * postsPerPage
+    const indexFirstPost = indexLastPost - postsPerPage
+    const currentPosts = posts.slice(indexFirstPost, indexLastPost)
+
     if(loading){
         return(
             <div className='posts-container'>
@@ -36,7 +41,7 @@ export const Posts = () => {
     return (
         <div className='posts-container'>
             <section className='posts'>
-                {posts.map(post => {
+                {currentPosts.map(post => {
                     return(
                     <div className='post' key={post.id}>
                         <div className='post-head'>
@@ -49,6 +54,7 @@ export const Posts = () => {
                     )
                 })}
             </section>
+            <Pagination postsPerPage={postsPerPage} totalPosts={posts.length}/>
         </div>
     )
 }
