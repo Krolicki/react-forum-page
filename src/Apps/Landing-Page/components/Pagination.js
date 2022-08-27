@@ -1,6 +1,6 @@
 import "./styles/Pagination.css"
 
-export const Pagination = ({postsPerPage, totalPosts}) => {
+export const Pagination = ({postsPerPage, totalPosts, paginate}) => {
     const pagesNumbers = []
 
     for(let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++){
@@ -12,7 +12,7 @@ export const Pagination = ({postsPerPage, totalPosts}) => {
                 {pagesNumbers.map(num => {
                     return(
                         <li key={num} className="page-number">
-                            <a href="#" className="page-link">
+                            <a onClick={()=> paginate(num)} href="#posts-top" className="page-link">
                                 {num}
                             </a>
                         </li>
