@@ -42,6 +42,12 @@ export const Posts = () => {
 
     return (
         <div className='posts-container' id="posts-top">
+            <Pagination
+                postsPerPage={postsPerPage} 
+                totalPosts={posts.length} 
+                paginate={paginate}
+                currentPage={currentPage}
+            />
             <section className='posts'>
                 {currentPosts.map(post => {
                     return (
@@ -60,6 +66,7 @@ export const Posts = () => {
                 postsPerPage={postsPerPage} 
                 totalPosts={posts.length} 
                 paginate={paginate} 
+                currentPage={currentPage}
             />
         </div>
     )

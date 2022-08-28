@@ -10,12 +10,13 @@
 
 .posts{
     width: 100%;
-    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    gap: 6vh;
 }
 
 .post{
     padding: 1rem;
-    margin-bottom: 6vh;
     background-color:rgb(195, 225, 251)
 }
 
