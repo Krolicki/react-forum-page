@@ -1,6 +1,6 @@
 import './landingPage.css'
 import { Navbar } from './components/Navbar'
-import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import { About } from './components/About'
 import { Home } from './components/Home'
 import { Register } from './components/Register'
@@ -11,6 +11,7 @@ import { useCookies } from 'react-cookie'
 import useAuth from './hooks/useAuth'
 import { useEffect } from 'react'
 import { Posts } from './components/Posts'
+import { NewPost } from './components/NewPost'
 
 const navbarItems = [
     {url: "/", title:"Home"},
@@ -57,6 +58,9 @@ export const LandingPage = () => {
                             } />
                             <Route path="/login" element={
                                 <Login />
+                            } />
+                            <Route path="/newpost" element={
+                                <NewPost />
                             } />
                             <Route path="*" element={
                                 <Missing />                           

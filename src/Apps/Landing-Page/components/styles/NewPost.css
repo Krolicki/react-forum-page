@@ -1,0 +1,100 @@
+.newpost-container{
+    background-image: url('../../assets/1.jpg');
+    padding-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+
+}
+
+.newpost-post{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 5vmin;
+    width: 80vw;
+    border-radius: 4px;
+    background-color:rgba(76, 95, 74, 0.716);
+    box-shadow: 0 0 12px 0 rgb(76, 95, 74);
+}
+
+.newpost-post h1{
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+.newpost-form input[type="text"],
+.newpost-form button,
+.newpost-form textarea {
+    font-size: 18px;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin-block: 5px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.485);
+}
+
+.newpost-form input[type="text"]:focus,
+.newpost-form button:focus,
+.newpost-form textarea:focus {
+    box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.508);
+}
+
+.newpost-form textarea {
+    width: 100%;
+    resize: vertical;
+    max-height: 50vh;
+    height: 200px;
+    min-height: 200px;
+}
+
+.newpost-form button{
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 20px;
+    padding-block: 15px;
+    background-color: rgba(232, 241, 231, 0.716);
+}
+
+.newpost-offscreen {
+    position: absolute;
+    left: -9999px;
+}
+
+.loader-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+.loader{
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgb(173, 173, 173);
+    border-top: 5px solid rgb(1, 111, 255);
+    border-radius: 50%;
+    background: transparent;
+    animation: loading-animation 1s ease-in-out infinite;
+  }
+
+.newpost-errmsg {
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+  @keyframes loading-animation{
+    from {
+      transform: rotate(-45deg);
+    }
+    to {
+      transform: rotate(315deg);
+    }
+  }
