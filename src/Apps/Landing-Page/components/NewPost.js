@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import "./styles/NewPost.css"
 import { Link } from 'react-router-dom';
+import useAuth from "../hooks/useAuth";
 
 export const NewPost = () => {
     const [title, setTitle] = useState('')
@@ -12,6 +13,8 @@ export const NewPost = () => {
     const titleRef = useRef()
     const errRef = useRef()
 
+    const {auth} = useAuth()
+
     useEffect(()=>{
         titleRef.current.focus()
     },[])
@@ -21,13 +24,13 @@ export const NewPost = () => {
         setSending(true)
         setErrMsg('')
         let date = new Date()
-        let postDate = `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
+        let postDate = `${('0'+date.getDate()).slice(-2)}-${('0'+(date.getMonth()+1)).slice(-2)}-${date.getFullYear()} ${('0'+date.getHours()).slice(-2)}:${('0'+date.getMinutes()).slice(-2)}`
         await fetch(`http://localhost:5000/posts`, {
                     method: 'POST',
                     headers: {
                         'Content-type': 'application/json'
                     },
-                    body: JSON.stringify({title, desc: content, date: postDate})
+                    body: JSON.stringify({title, desc: content, date: postDate, user: auth.user})
         })
         .then((response) => {
             if(response.ok){

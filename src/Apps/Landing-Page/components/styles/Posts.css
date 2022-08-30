@@ -36,7 +36,8 @@
     margin-bottom: 2%;
 }
 
-.post button{
+.post button,
+.new-post-button button{
     padding: 12px;
     cursor: pointer;
     background-color:rgb(60, 69, 77);
@@ -44,6 +45,14 @@
     border: none;
 }
 
-.post button:hover{
+.post button:hover,
+.new-post-button button:hover{
     background-color:rgb(73, 84, 93);
+}
+
+.new-post-button{
+    display: block;
+    margin-bottom: 20px;
+    margin-left: auto;
+
 }

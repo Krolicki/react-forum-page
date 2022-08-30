@@ -49,6 +49,7 @@ export const Posts = () => {
                 paginate={paginate}
                 currentPage={currentPage}
             />
+            <Link to="/newpost" className='new-post-button'><button>New Post</button></Link>
             <section className='posts'>
                 {currentPosts.map(post => {
                     return (
@@ -58,6 +59,7 @@ export const Posts = () => {
                                 <p>Date: {post.date}</p>
                             </div>
                             <p className='post-desc'>{post.desc}</p>
+                            {post.user !==undefined ? <p className='post-desc'>Posted by: {post.user}</p> : <></>}
                             <Link to={`/post/${post.id}`}>
                                 <button type='button'>Show post</button>
                             </Link>

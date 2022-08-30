@@ -45,12 +45,9 @@ export const LandingPage = () => {
                                 <Home />
                             } />
                             <Route element={<RequireAuth />}>
-                                <Route path="/posts" element={
-                                    <Posts />
-                                } />
-                                <Route path="/post/:id" element={
-                                    <Post />
-                                } />
+                                <Route path="/posts" element={<Posts />} />
+                                <Route path="/post/:id" element={<Post />} />
+                                <Route path="/newpost" element={<NewPost />} />
                             </Route>
                             <Route path="/about" element={
                                 <About />
@@ -65,9 +62,6 @@ export const LandingPage = () => {
                             } />
                             <Route path="/login" element={
                                 <Login />
-                            } />
-                            <Route path="/newpost" element={
-                                <NewPost />
                             } />
                             <Route path="*" element={
                                 <Missing />                           
