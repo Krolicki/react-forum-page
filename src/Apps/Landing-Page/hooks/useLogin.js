@@ -1,13 +1,15 @@
 import { useState } from "react"
 import useAuth from "./useAuth"
 import { useCookies } from 'react-cookie'
+import { useNavigate } from "react-router-dom"
 
 
 function useLogin(){
     const [loading, setLoading] = useState(false)
     const [error, setError] =  useState(null) 
-    const [successLogin, setSuccessLogin] = useState(null)
     const {setAuth} = useAuth()
+
+    const navigate = useNavigate()
 
     const [cookies, setCookie] = useCookies(['user'])
 
@@ -23,11 +25,11 @@ function useLogin(){
             .then(response => response.json())
             .then(response => {
                 if(response.length !== 0){
-                    setSuccessLogin(true)
                     setAuth({user, pwd})
                     let expires = new Date()
                     expires.setTime(expires.getTime() + (10 * 60000)) // 10 minutes
                     setCookie('user', user, { path: '/',  expires})
+                    navigate(from, {replace: true})
                 }
                 else{
                     setError("Wrong username or password")
@@ -41,7 +43,7 @@ function useLogin(){
             })
     }
 
-    return {login, loading, successLogin, error}
+    return {login, loading, error}
 }
 
 export default useLogin

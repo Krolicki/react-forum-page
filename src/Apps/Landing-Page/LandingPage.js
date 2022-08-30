@@ -13,6 +13,7 @@ import { useEffect } from 'react'
 import { Posts } from './components/Posts'
 import { NewPost } from './components/NewPost'
 import { Post } from './components/Post'
+import { RequireAuth } from './components/RequireAuth'
 
 const navbarItems = [
     {url: "/", title:"Home"},
@@ -43,12 +44,14 @@ export const LandingPage = () => {
                             <Route path="/" element={
                                 <Home />
                             } />
-                            <Route path="/posts" element={
-                                <Posts />
-                            } />
-                            <Route path="/post/:id" element={
-                                <Post />
-                            } />
+                            <Route element={<RequireAuth />}>
+                                <Route path="/posts" element={
+                                    <Posts />
+                                } />
+                                <Route path="/post/:id" element={
+                                    <Post />
+                                } />
+                            </Route>
                             <Route path="/about" element={
                                 <About />
                             } />
