@@ -5,7 +5,9 @@ import useAuth from "../hooks/useAuth";
 
 export const NewPost = () => {
     const [title, setTitle] = useState('')
+    const [desc, setDesc] = useState('')
     const [content, setContent] = useState('')
+
     const [sending, setSending] = useState(false)
     const [posted, setPosted] = useState(false)
     const [errMsg, setErrMsg] = useState('')
@@ -30,7 +32,13 @@ export const NewPost = () => {
                     headers: {
                         'Content-type': 'application/json'
                     },
-                    body: JSON.stringify({title, desc: content, date: postDate, user: auth.user})
+                    body: JSON.stringify({
+                        title, 
+                        desc,
+                        content, 
+                        date: postDate, 
+                        user: auth.user
+                    })
         })
         .then((response) => {
             if(response.ok){
@@ -78,6 +86,17 @@ export const NewPost = () => {
                         autoComplete="off"
                         onChange={(e) => {setTitle(e.target.value)}}
                         value={title}
+                        required
+                    />
+                    <label htmlFor='desc'>
+                            Short description:
+                    </label>
+                    <input 
+                        type="text"
+                        id="desc"
+                        autoComplete="off"
+                        onChange={(e) => {setDesc(e.target.value)}}
+                        value={desc}
                         required
                     />
                     <label htmlFor='content'>

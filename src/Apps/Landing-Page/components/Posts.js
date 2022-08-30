@@ -55,8 +55,10 @@ export const Posts = () => {
                     return (
                         <div className='post' key={post.id}>
                             <div className='post-head'>
-                                <h2>{post.title}</h2>
-                                <p>Date: {post.date}</p>
+                                <div className='post-title'>
+                                    <h2>{post.title}</h2>
+                                    <p>Date: {post.date}</p>
+                                </div>
                             </div>
                             <p className='post-desc'>{post.desc}</p>
                             {post.user !==undefined ? <p className='post-desc'>Posted by: {post.user}</p> : <></>}

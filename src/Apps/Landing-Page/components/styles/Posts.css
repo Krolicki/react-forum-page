@@ -23,17 +23,32 @@
 }
 
 .post-head{
+    background-color:rgb(167, 210, 248);
+    box-shadow: 0px 0px 0px 1.25rem rgb(167, 210, 248);
+    margin-bottom: 2.5rem;
+}
+
+.post-title{
     display: flex;
     justify-content: space-between;
     margin-bottom: 1%;
 }
 
-.post-head h2{
+.post-title h2{
     font-weight: 500;
+    overflow: hidden;
 }
 
 .post-desc{
     margin-bottom: 2%;
+    overflow-wrap: break-word;
+    max-height: 100px;
+    overflow: hidden;
+}
+
+.post-content{
+    margin-bottom: 2%;
+    font-size: 1.2rem;
 }
 
 .post button,

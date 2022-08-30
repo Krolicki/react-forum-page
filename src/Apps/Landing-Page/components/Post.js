@@ -36,11 +36,15 @@ export const Post = () => {
     return(
         <section className='post-container'>
             <div className='post post-post'>
-                <div className='post-head'>
-                    <h2>{post.title}</h2>
-                    <p>Date: {post.date}</p>
+                <div className="post-head">
+                    <div className='post-title'>
+                        <h2>{post.title}</h2>
+                        <p>Date: {post.date}</p>
+                    </div>
+                    <p className='post-desc'>{post.desc}</p>
+                    {post.user !==undefined ? <p className='post-desc'>Posted by: {post.user}</p> : <></>}
                 </div>
-                <p className='post-desc'>{post.desc}</p>
+                <p className='post-content'>{post.content}</p>
                 <Link to={`/posts`}>
                     <button type="button">Go to Posts</button>
                 </Link>
