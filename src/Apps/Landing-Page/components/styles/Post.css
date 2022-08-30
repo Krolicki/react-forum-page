@@ -1,0 +1,16 @@
+.post-container{
+    width: 100%;
+    padding-top: 70px;
+    display: flex;
+    align-items: flex-start;
+    padding-inline: 5vw;
+    margin-right: auto;
+    flex-direction: column;
+}
+
+.post-post{
+    width: 100%;
+    background-color:rgb(195, 225, 251);
+    margin-top: 70px;
+    padding: 20px;
+}

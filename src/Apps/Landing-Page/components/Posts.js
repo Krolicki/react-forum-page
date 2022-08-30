@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Pagination } from './Pagination'
 import './styles/Posts.css'
 
@@ -57,7 +58,9 @@ export const Posts = () => {
                                 <p>Date: {post.date}</p>
                             </div>
                             <p className='post-desc'>{post.desc}</p>
-                            <button>Show post</button>
+                            <Link to={`/post/${post.id}`}>
+                                <button type='button'>Show post</button>
+                            </Link>
                         </div>
                     )
                 })}

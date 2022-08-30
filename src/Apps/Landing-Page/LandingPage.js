@@ -12,6 +12,7 @@ import useAuth from './hooks/useAuth'
 import { useEffect } from 'react'
 import { Posts } from './components/Posts'
 import { NewPost } from './components/NewPost'
+import { Post } from './components/Post'
 
 const navbarItems = [
     {url: "/", title:"Home"},
@@ -44,6 +45,9 @@ export const LandingPage = () => {
                             } />
                             <Route path="/posts" element={
                                 <Posts />
+                            } />
+                            <Route path="/post/:id" element={
+                                <Post />
                             } />
                             <Route path="/about" element={
                                 <About />

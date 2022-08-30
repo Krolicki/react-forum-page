@@ -7,7 +7,9 @@
     margin-right: auto;
     flex-direction: column;
 }
-
+* {
+    box-sizing: border-box 
+ }
 .posts{
     width: 100%;
     display: flex;
