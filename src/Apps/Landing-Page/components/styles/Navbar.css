@@ -147,6 +147,7 @@ nav ul{
         transition: transform .4s ease-out;
         transform: translateX(100%);
         opacity: 1;
+        box-shadow: none;
     }
     .show-user-menu{
         opacity: 1;

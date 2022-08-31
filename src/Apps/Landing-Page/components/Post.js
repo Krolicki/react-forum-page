@@ -7,6 +7,8 @@ export const Post = () => {
     const {id} = useParams()
     const [post, setPost] = useState([])
     const [loading, setLoading] = useState(false)
+    const [showDeleteWindow, setShowDeleteWindow] = useState(false)
+    const [animateDeleteWindow, setAnimateDeleteWindow] = useState(false)
 
     useEffect(() => {
         const getPost = async () => {
@@ -25,6 +27,21 @@ export const Post = () => {
         }
         getPost()
     }, [])
+
+    const showHideDeleteWindow = (showHide) => {
+        if(showHide){
+            setShowDeleteWindow(true)
+            setTimeout(()=>{
+                setAnimateDeleteWindow(true)
+            }, 1)
+        }
+        else{
+            setAnimateDeleteWindow(false)
+            setTimeout(()=>{
+                setShowDeleteWindow(false)
+            }, 300)
+        }
+    }
 
     if (loading) {
         return (
@@ -45,10 +62,27 @@ export const Post = () => {
                     {post.user !==undefined ? <p className='post-desc'>Posted by: {post.user}</p> : <></>}
                 </div>
                 <p className='post-content'>{post.content}</p>
-                <Link to={`/posts`}>
-                    <button type="button">Go to Posts</button>
-                </Link>
+                <div className="post-options">
+                    <Link to={`/posts`}>
+                        <button type="button">Back to Posts</button>
+                    </Link>
+                    <span>
+                        <button type="button" onClick={()=>showHideDeleteWindow(true)}>Delete post</button>
+                        <button type="button">Edit post</button>
+                    </span>
+                </div>
             </div>
+            {showDeleteWindow && 
+                <div className={`delete-window ${animateDeleteWindow ? "show-delete-window" : ""}`}>
+                    <div className="delete-window-content">
+                        <h2>Are you sure you want to delete post "{post.title}?"</h2>
+                        <span className="delete-window-buttons">
+                            <button>Yes</button>
+                            <button onClick={()=>showHideDeleteWindow(false)}>Cancel</button>
+                        </span>
+                    </div>
+                </div>
+            }
         </section>
     )
 }
