@@ -104,7 +104,9 @@ export const Post = () => {
                     </Link>
                     <span>
                         <button type="button" onClick={()=>showHideDeleteWindow(true)}>Delete post</button>
-                        <button type="button">Edit post</button>
+                        <Link to={`/editpost/${post.id}`}>
+                            <button type="button">Edit post</button>
+                        </Link>
                     </span>
                 </div>
             </div>

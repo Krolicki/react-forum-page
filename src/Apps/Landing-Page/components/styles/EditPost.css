@@ -20,3 +20,7 @@
 .edit-post-form textarea:focus{
     box-shadow: 0 0 6px 0 rgb(65, 64, 64);
 }
+
+.newpost-link{
+    color: black;
+}

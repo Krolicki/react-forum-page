@@ -24,7 +24,7 @@ export const useGetPost = (id) => {
             setLoading(false)
         }
         getPost(id)
-    },[])
+    },[id])
 
-    return {post, loading}
+    return {post, loading, postNotFound}
 }
