@@ -1,0 +1,22 @@
+.edit-post-form input{
+    width: 100%;
+    padding: .7rem;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    border: none;
+    outline: none;
+}
+
+.edit-post-form textarea{
+    padding: .7rem;
+    width: 100%;
+    min-height: 300px;
+    resize: vertical;
+    border: none;
+    outline: none;
+}
+
+.edit-post-form input:focus,
+.edit-post-form textarea:focus{
+    box-shadow: 0 0 6px 0 rgb(65, 64, 64);
+}
