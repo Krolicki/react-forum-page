@@ -49,6 +49,7 @@
 .post-content{
     margin-bottom: 2%;
     font-size: 1.2rem;
+    white-space: pre-wrap;
 }
 
 .post button,

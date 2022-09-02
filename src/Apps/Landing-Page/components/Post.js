@@ -92,7 +92,11 @@ export const Post = () => {
                 <div className="post-head">
                     <div className='post-title'>
                         <h2>{post.title}</h2>
-                        <p>Date: {post.date}</p>
+                        {post.edit?
+                            <p>Edited: {post.edit}<br/>Posted: {post.date}</p>
+                        :
+                            <p>Posted: {post.date}</p>
+                        }  
                     </div>
                     <p className='post-desc'>{post.desc}</p>
                     {post.user !==undefined ? <p className='post-desc'>Posted by: {post.user}</p> : <></>}

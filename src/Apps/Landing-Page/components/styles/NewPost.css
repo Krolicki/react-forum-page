@@ -92,7 +92,7 @@
 }
 
 .newpost-link{
-  color: white;
+  color: white !important;
   margin-top: 10px;
 }
 

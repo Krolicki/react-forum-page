@@ -57,7 +57,11 @@ export const Posts = () => {
                             <div className='post-head'>
                                 <div className='post-title'>
                                     <h2>{post.title}</h2>
-                                    <p>Date: {post.date}</p>
+                                    {post.edit?
+                                        <p>Edited: {post.edit}</p>
+                                    :
+                                        <p>Posted: {post.date}</p>
+                                    }   
                                 </div>
                             </div>
                             <p className='post-desc'>{post.desc}</p>
