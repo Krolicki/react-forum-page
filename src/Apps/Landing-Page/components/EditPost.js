@@ -127,7 +127,7 @@ export const EditPost = () => {
                             <input 
                                 id="description" 
                                 onChange={(e) => {setDesc(e.target.value)}}
-                                value={desc || 'Loading description'} 
+                                value={desc || 'Loading description...'} 
                                 autoComplete="off"
                                 required
                             />
@@ -139,7 +139,7 @@ export const EditPost = () => {
                             id="content" 
                             className='post-content' 
                             onChange={(e) => {setContent(e.target.value)}}
-                            value={content || 'Loading content'} 
+                            value={content || ''} 
                             autoComplete="off"
                             required
                         />

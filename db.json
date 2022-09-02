@@ -135,7 +135,9 @@
       "title": "Test 3",
       "desc": "tttteeeeessssttttt3333!!!!",
       "date": "29-8-2022 14:47",
-      "id": 19
+      "id": 19,
+      "content": "Edited",
+      "edit": "02-09-2022 18:08"
     },
     {
       "title": "Test 4",
@@ -197,12 +199,13 @@
       "id": 29
     },
     {
-      "title": "Test13",
+      "title": "Test13.2",
       "desc": "Test description",
       "content": "Content text",
       "date": "30-08-2022 18:27",
       "user": "Q123",
-      "id": 30
+      "id": 30,
+      "edit": "02-09-2022 18:08"
     },
     {
       "title": "Test14 - edit 4",
