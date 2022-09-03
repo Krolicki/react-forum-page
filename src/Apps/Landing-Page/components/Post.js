@@ -1,37 +1,16 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Link, useParams } from "react-router-dom"
+import { useGetPost } from "../hooks/useGetPost"
 import "./styles/Post.css"
 import "./styles/Posts.css"
 
 export const Post = () => {
     const {id} = useParams()
-    const [post, setPost] = useState([])
-    const [loading, setLoading] = useState(false)
-    const [postNotFound, setPostNotFound] = useState(false)
     const [showDeleteWindow, setShowDeleteWindow] = useState(false)
     const [animateDeleteWindow, setAnimateDeleteWindow] = useState(false)
     const [postDeleted, setPostDeleted] = useState(false)
 
-    useEffect(() => {
-        const getPost = async () => {
-            setLoading(true)
-            const postFromAPI = await fetch(`http://localhost:5000/posts/?id=${id}`)
-                .then(respsonse => {
-                    if (respsonse.ok)
-                        return respsonse.json()
-                    throw respsonse
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-            if(postFromAPI.length !== 0)
-                setPost(postFromAPI[0])
-            else
-                setPostNotFound(true)
-            setLoading(false)
-        }
-        getPost()
-    }, [])
+    const {post, loading, postNotFound} = useGetPost(id)
 
     const deletePost = async () => {
         await fetch(`http://localhost:5000/posts/${post.id}`, {

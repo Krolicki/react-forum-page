@@ -1,4 +1,3 @@
-import { useEffect, useMemo } from "react"
 import "./styles/Pagination.css"
 
 export const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
