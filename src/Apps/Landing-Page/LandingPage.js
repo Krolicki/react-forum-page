@@ -5,7 +5,6 @@ import { About } from './components/About'
 import { Home } from './components/Home'
 import { Register } from './components/Register'
 import { Login } from './components/Login'
-import { AuthProvider } from './context/AuthProvider'
 import { Missing } from './components/Missing'
 import { useCookies } from 'react-cookie'
 import useAuth from './hooks/useAuth'
@@ -15,6 +14,7 @@ import { NewPost } from './components/NewPost'
 import { Post } from './components/Post'
 import { RequireAuth } from './components/RequireAuth'
 import { EditPost } from './components/EditPost'
+import { Footer } from './components/Footer'
 
 const navbarItems = [
     {url: "/", title:"Home"},
@@ -24,7 +24,7 @@ const navbarItems = [
 ]
 
 export const LandingPage = () => {
-    const {auth, setAuth} = useAuth()
+    const { setAuth} = useAuth()
     const [cookies] = useCookies()
 
     const readCookies = () => {
@@ -69,6 +69,7 @@ export const LandingPage = () => {
                                 <Missing />                           
                             } />
                         </Routes>
+                    <Footer />
                 </BrowserRouter> 
         </div>
     )

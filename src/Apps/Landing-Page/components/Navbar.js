@@ -20,7 +20,9 @@ export const Navbar = ({navbarItems}) => {
     const location = useLocation()
     return(
         <nav onMouseLeave={()=>{setShowUserMenu(false)}} >
-            <span className="logo">LandingPage</span>
+            <Link to="/" className="logo">
+                LandingPage
+            </Link>  
             {menuClick ? (
                 <FiX size={25} className="nav-icon" onClick={toggleMenuClick} />
             ) : (
