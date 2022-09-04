@@ -3,6 +3,7 @@ footer{
     position: relative;
     margin: 0;
     padding: 5vh 5vw;
+    background: linear-gradient(90deg, rgb(55, 55, 80) 0%,  rgb(11, 47, 79) 100%);
 }
 
 .footer-logo{
@@ -30,7 +31,7 @@ footer{
 
 .footer-contact{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     width: 50%;
 }
 
@@ -39,8 +40,14 @@ footer{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 25%;
+    flex: 1;
     font-size: 1rem;
+
+}
+
+.footer-contact span a{
+    color: white;
+    text-decoration: none;
 }
 
 .footer-contact span h2{
@@ -51,6 +58,8 @@ footer{
     border-radius: 50%;
     margin-bottom: 15px;
     padding: 10px;
+    max-width: 20vw;
+    max-height: 20vw;
 }
 
 .footer-newsletter{
@@ -92,4 +101,42 @@ footer{
     background-color: #ffd92d;;
     color: rgb(22, 97, 163);
     font-weight: bold;
+}
+
+@media screen and (max-width: 920px){
+
+    footer{
+        padding-inline: 0;
+    }
+
+    .footer-content{
+        flex-direction: column;
+        gap: 5vh;
+    }
+
+    .footer-contact{
+        width: 100%;
+        align-items: flex-start;
+        justify-content: space-between;
+       
+    }
+    .footer-contact span{
+        max-width: 30%;
+        overflow-wrap: break-word;
+    }
+
+    .footer-contact p{
+        font-size: .7rem;
+    }
+    .footer-logo{
+        font-size: 3rem;
+    }
+
+    .footer-contact span h2{
+        font-size: 1.2rem;
+    }
+
+    .footer-newsletter{
+        margin-inline: 5vw;
+    }
 }

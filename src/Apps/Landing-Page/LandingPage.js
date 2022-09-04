@@ -40,7 +40,7 @@ export const LandingPage = () => {
     return (
         <div>
                 <BrowserRouter >              
-                    <Navbar navbarItems={navbarItems}/>
+                    <Navbar navbarItems={navbarItems} />
                         <Routes>
                             <Route path="/" element={
                                 <Home />

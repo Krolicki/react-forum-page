@@ -1,6 +1,6 @@
 import './styles/Footer.css'
 import { AiOutlinePhone} from "react-icons/ai"
-import { GoMail} from "react-icons/go"
+import { GoMail, GoMarkGithub} from "react-icons/go"
 import { Link } from 'react-router-dom'
 
 export const Footer = () =>{
@@ -22,7 +22,14 @@ export const Footer = () =>{
                     <span>
                         <GoMail size={120}  className="footer-icon" />
                         <h2>Mail</h2>
-                        <p>contact@landing-page.com</p>
+                        <p>jakub.krolicki.k@gmail.com</p>
+                    </span>
+                    <span>
+                        <a href="https://github.com/Krolicki" target="_blank">
+                            <GoMarkGithub size={120}  className="footer-icon" />
+                            <h2>GitHub</h2>
+                            <p>github.com/Krolicki</p>
+                        </a>
                     </span>
                 </div>
                 <div className='footer-newsletter'>
