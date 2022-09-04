@@ -16,17 +16,25 @@ export const Footer = () =>{
                 <div className='footer-contact'>
                     <span>
                         <AiOutlinePhone size={120} className="footer-icon" />
-                        +1234231543
+                        <h2>Call center</h2>
+                        <p>+1234231543</p>
                     </span>
                     <span>
                         <GoMail size={120}  className="footer-icon" />
-                        contact@landing-page.com
+                        <h2>Mail</h2>
+                        <p>contact@landing-page.com</p>
                     </span>
                 </div>
                 <div className='footer-newsletter'>
-
+                    <p>SUBSCRIBE TO THE NEWSLETTER:</p>
+                    <span>
+                        <input placeholder='Enter your e-mail'/>
+                        <button>SUBSCRIBE</button>
+                    </span>
                 </div>
             </div>
+            <span className='footer-line'></span>
+            <p>©2022 LandingPage Jakub Królicki</p>
         </footer>
     )
 }
