@@ -35,6 +35,28 @@
       "id": 4
     }
   ],
+  "newsletter": [
+    {
+      "id": 1,
+      "email": "test@asd.com"
+    },
+    {
+      "email": "123@asd.pl",
+      "id": 2
+    },
+    {
+      "email": "12321@sadas.pl",
+      "id": 3
+    },
+    {
+      "email": "21312@dsa.pl",
+      "id": 4
+    },
+    {
+      "email": "312312@asda.sss",
+      "id": 5
+    }
+  ],
   "posts": [
     {
       "id": 1,

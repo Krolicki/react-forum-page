@@ -76,7 +76,7 @@ footer{
 }
 
 
-.footer-newsletter span{
+.footer-newsletter form{
     width: 100%;
     margin-top: 15px;
     display: flex;
@@ -101,6 +101,11 @@ footer{
     background-color: #ffd92d;;
     color: rgb(22, 97, 163);
     font-weight: bold;
+    cursor: pointer;
+}
+
+.invalid-email{
+    box-shadow: 0 0 12px 0 rgb(255, 2, 2);
 }
 
 @media screen and (max-width: 920px){
