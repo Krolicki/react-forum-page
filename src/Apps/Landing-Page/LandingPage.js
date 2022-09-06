@@ -15,6 +15,7 @@ import { Post } from './components/Post'
 import { RequireAuth } from './components/RequireAuth'
 import { EditPost } from './components/EditPost'
 import { Footer } from './components/Footer'
+import { Contact } from './components/Contact'
 
 const navbarItems = [
     {url: "/", title:"Home"},
@@ -55,9 +56,7 @@ export const LandingPage = () => {
                                 <About />
                             } />
                             <Route path="/contact" element={
-                                <>
-                                <p>Contact</p> 
-                                </>
+                                <Contact />
                             } />
                             <Route path="/register" element={
                                 <Register />

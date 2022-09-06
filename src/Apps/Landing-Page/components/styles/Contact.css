@@ -1,0 +1,11 @@
+.contact-container{
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(90deg, rgb(55, 55, 80) 0%,  rgb(11, 47, 79) 100%);
+    position: absolute;
+}
+
+.contact-spacer{
+    height: 70px;
+    width: 100%;
+}

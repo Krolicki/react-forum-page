@@ -1,6 +1,7 @@
 .post-container{
     width: 100%;
-    padding-top: 70px;
+    min-height: 100vh;
+    padding-block: 70px;
     display: flex;
     align-items: flex-start;
     padding-inline: 5vw;
