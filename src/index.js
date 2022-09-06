@@ -9,11 +9,11 @@ import { AuthProvider } from './Apps/Landing-Page/context/AuthProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  //<React.StrictMode>
     <AuthProvider>
       <LandingPage />
     </AuthProvider>
-  </React.StrictMode>
+  //</React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

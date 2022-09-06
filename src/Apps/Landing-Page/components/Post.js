@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
+import { useAddView } from "../hooks/useAddView"
 import { useGetPost } from "../hooks/useGetPost"
 import "./styles/Post.css"
 import "./styles/Posts.css"
@@ -11,6 +12,7 @@ export const Post = () => {
     const [postDeleted, setPostDeleted] = useState(false)
 
     const {post, loading, postNotFound} = useGetPost(id)
+    const {addView} = useAddView()
 
     const deletePost = async () => {
         await fetch(`http://localhost:5000/posts/${post.id}`, {
@@ -42,6 +44,17 @@ export const Post = () => {
             }, 300)
         }
     }
+
+    useEffect(()=>{
+        if(post.id!== undefined){
+            if(post.views !== undefined && !isNaN(post.views)){
+                addView(post.id, post.views)
+            }
+            else{
+                addView(post.id, 0)
+            }
+        }
+    },[post])
 
     if (loading) {
         return (
