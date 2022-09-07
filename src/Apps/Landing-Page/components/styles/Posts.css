@@ -20,7 +20,7 @@
 
 .post{
     padding: 1rem;
-    background-color:rgb(195, 225, 251)
+    background-color:rgb(195, 225, 251);
 }
 
 .post-head{
@@ -41,10 +41,17 @@
 }
 
 .post-desc{
+    font-size: 1.3rem;
     margin-bottom: 2%;
     overflow-wrap: break-word;
     max-height: 100px;
     overflow: hidden;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.post-info{
+    margin-bottom: 15px;
 }
 
 .post-content{

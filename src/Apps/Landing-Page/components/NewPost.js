@@ -12,6 +12,8 @@ export const NewPost = () => {
     const [posted, setPosted] = useState(false)
     const [errMsg, setErrMsg] = useState('')
 
+    const [newID, setNewID] = useState(0)
+
     const titleRef = useRef()
     const errRef = useRef()
 
@@ -37,15 +39,19 @@ export const NewPost = () => {
                         desc,
                         content, 
                         date: postDate, 
-                        user: auth.user
+                        user: auth.user,
+                        views: 0
                     })
         })
         .then((response) => {
             if(response.ok){
-                setPosted(true)
-                return response
+                return response.json()
             }
             throw response
+        })
+        .then((response)=>{
+            setNewID(response.id)
+            setPosted(true)
         })
         .catch((err)=>{
             console.log(err)
@@ -69,6 +75,7 @@ export const NewPost = () => {
                 <h1>Successfully added post</h1>
                 <h3>Title: {title}</h3>
                 <Link to="/posts" className="newpost-link">Go to Posts</Link>
+                <Link to={`/post/${newID}`} className="newpost-link">Open this Post</Link>
             </>
             :
             <>
