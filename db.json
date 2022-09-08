@@ -239,7 +239,7 @@
       "date": "30-08-2022 18:31",
       "user": "Q123",
       "id": 31,
-      "views": 1
+      "views": 14
     },
     {
       "title": "Test 15",
@@ -248,7 +248,7 @@
       "date": "02-09-2022 17:50",
       "user": "Q123",
       "id": 32,
-      "views": 5
+      "views": 8
     },
     {
       "title": "Test 16",
@@ -258,7 +258,7 @@
       "user": "Q123",
       "id": 33,
       "edit": "02-09-2022 18:00",
-      "views": 12
+      "views": 13
     },
     {
       "title": "Test 17",
@@ -275,7 +275,7 @@
       "content": "after add",
       "date": "07-09-2022 21:44",
       "user": "Q123",
-      "views": 1,
+      "views": 2,
       "id": 35
     },
     {
@@ -293,7 +293,7 @@
       "content": "rddfs",
       "date": "07-09-2022 21:47",
       "user": "Q123",
-      "views": 6,
+      "views": 7,
       "id": 37
     }
   ]
