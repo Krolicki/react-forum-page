@@ -59,7 +59,7 @@ footer{
     margin-bottom: 15px;
     padding: 10px;
     max-width: 20vw;
-    max-height: 20vw;
+
 }
 
 .footer-newsletter{
@@ -108,7 +108,7 @@ footer{
     box-shadow: 0 0 12px 0 rgb(255, 2, 2);
 }
 
-@media screen and (max-width: 920px){
+@media screen and (max-width: 1200px){
 
     footer{
         padding-inline: 0;
@@ -131,7 +131,7 @@ footer{
     }
 
     .footer-contact p{
-        font-size: .7rem;
+        font-size: 1rem;
     }
     .footer-logo{
         font-size: 3rem;
@@ -143,5 +143,21 @@ footer{
 
     .footer-newsletter{
         margin-inline: 5vw;
+        padding-block: 5vh;
+        gap: 1vh
+    }
+}
+
+@media screen and (max-width: 590px){
+    .footer-contact{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px
+    }
+    .footer-icon{
+        max-width: 40vw;
+        max-height: 40vw;
+
     }
 }

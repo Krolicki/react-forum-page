@@ -119,6 +119,8 @@
     }
     .posts-best{
         padding-inline: 5vw;
-        margin-bottom: 5vh;
+        padding-bottom: 5vh;
+        background:  rgb(233, 245, 251);
     }
+
   }

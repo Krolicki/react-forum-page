@@ -1,11 +1,17 @@
 .contact-container{
-    height: 100vh;
+    height: 100%;
     width: 100%;
     background: linear-gradient(90deg, rgb(55, 55, 80) 0%,  rgb(11, 47, 79) 100%);
     position: absolute;
 }
 
 .contact-spacer{
-    height: 70px;
+    height: 18vh;
     width: 100%;
+}
+
+@media screen and (max-width: 1200px){
+    .contact-spacer{
+        height: 10vh;
+    }
 }
