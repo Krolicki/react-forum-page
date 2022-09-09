@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useLocation, useParams } from "react-router-dom"
 import { useAddView } from "../hooks/useAddView"
 import { useGetPost } from "../hooks/useGetPost"
 import "./styles/Post.css"
@@ -7,6 +7,7 @@ import "./styles/Posts.css"
 
 export const Post = () => {
     const {id} = useParams()
+    const query = useLocation()
     const [showDeleteWindow, setShowDeleteWindow] = useState(false)
     const [animateDeleteWindow, setAnimateDeleteWindow] = useState(false)
     const [postDeleted, setPostDeleted] = useState(false)
@@ -96,7 +97,7 @@ export const Post = () => {
                 </div>
                 <p className='post-content'>{post.content}</p>
                 <div className="post-options">
-                    <Link to={`/posts`}>
+                    <Link to={`/posts`} state={{page: query.state}}>
                         <button type="button">Back to Posts</button>
                     </Link>
                     <span>
@@ -121,7 +122,7 @@ export const Post = () => {
                         :
                         <> 
                             <h2>Post "{post.title}" has been deleted</h2>
-                            <Link to={`/posts`} className="delete-window-buttons">
+                            <Link to={`/posts`} state={{page: query.state}} className="delete-window-buttons">
                                 <button type="button">Back to Posts</button>
                             </Link>
                         </>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Pagination } from './Pagination'
 import './styles/Posts.css'
 
@@ -8,6 +8,7 @@ export const Posts = () => {
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurentPage] = useState(1)
     const [postsPerPage] = useState(5)
+    const query = useLocation()
 
     useEffect(() => {
         const getPosts = async () => {
@@ -26,6 +27,8 @@ export const Posts = () => {
             setLoading(false) 
         }
         getPosts()
+        if(query.state?.page !== undefined)
+            setCurentPage(query.state?.page)
     }, [])
 
     const indexLastPost = currentPage * postsPerPage
@@ -64,9 +67,7 @@ export const Posts = () => {
                 }
             }
         })
-        console.log(firstID, secondID, thirdID)
         setMostViewed([firstID, secondID, thirdID])
-        console.log(mostViewed)
     }
 
     if (loading) {
@@ -106,7 +107,7 @@ export const Posts = () => {
                                     {post.user !==undefined ? <p>Posted by: {post.user}</p> : <></>}
                                     <p>Views: {post.views !==undefined ? post.views : "0"}</p>
                                 </div>
-                                <Link to={`/post/${post.id}`}>
+                                <Link to={`/post/${post.id}`} state={currentPage}>
                                     <button type='button'>Show post</button>
                                 </Link>
                             </div>
@@ -140,7 +141,7 @@ export const Posts = () => {
                                     {post.user !==undefined ? <p>Posted by: {post.user}</p> : <></>}
                                     <p>Views: {post.views !==undefined ? post.views : "0"}</p>
                                 </div>
-                                <Link to={`/post/${post.id}`}>
+                                <Link to={`/post/${post.id}`} state={currentPage}>
                                     <button type='button'>Show post</button>
                                 </Link>
                             </div>

@@ -139,7 +139,8 @@
     {
       "title": "Test1",
       "desc": "qwe!@#adsqwe123asdzxcg",
-      "id": 15
+      "id": 15,
+      "views": 1
     },
     {
       "title": "Test 2",
@@ -159,7 +160,8 @@
       "date": "29-8-2022 14:47",
       "id": 19,
       "content": "Edited",
-      "edit": "02-09-2022 18:08"
+      "edit": "02-09-2022 18:08",
+      "views": 1
     },
     {
       "title": "Test 4",
@@ -171,7 +173,8 @@
       "title": "test7",
       "desc": "fdfsafas",
       "date": "29-8-2022 14:52",
-      "id": 22
+      "id": 22,
+      "views": 6
     },
     {
       "title": "test8",
@@ -206,7 +209,8 @@
       "desc": "date\n",
       "date": "30-08-2022 18:15",
       "user": "Q123",
-      "id": 27
+      "id": 27,
+      "views": 3
     },
     {
       "title": "Very long titleeeeeeeeeeeeefsafadsfasfafsrewfaeafasdfadsfeaf",
@@ -230,7 +234,8 @@
       "date": "30-08-2022 18:27",
       "user": "Q123",
       "id": 30,
-      "edit": "02-09-2022 18:08"
+      "edit": "02-09-2022 18:08",
+      "views": 1
     },
     {
       "title": "Test14 - edit 4",
@@ -239,7 +244,7 @@
       "date": "30-08-2022 18:31",
       "user": "Q123",
       "id": 31,
-      "views": 14
+      "views": 18
     },
     {
       "title": "Test 15",
@@ -248,7 +253,7 @@
       "date": "02-09-2022 17:50",
       "user": "Q123",
       "id": 32,
-      "views": 8
+      "views": 9
     },
     {
       "title": "Test 16",
@@ -258,7 +263,7 @@
       "user": "Q123",
       "id": 33,
       "edit": "02-09-2022 18:00",
-      "views": 13
+      "views": 14
     },
     {
       "title": "Test 17",
@@ -284,17 +289,18 @@
       "content": "wqe",
       "date": "07-09-2022 21:45",
       "user": "Q123",
-      "views": 0,
+      "views": 1,
       "id": 36
     },
     {
       "title": "Test 17.4",
-      "desc": "12",
-      "content": "rddfs",
+      "desc": "Back to page",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in libero posuere, tincidunt est non, tincidunt orci. Proin tristique a ante id faucibus. Ut quis arcu libero. Aenean sed eros quis risus rhoncus vestibulum.",
       "date": "07-09-2022 21:47",
       "user": "Q123",
-      "views": 7,
-      "id": 37
+      "views": 35,
+      "id": 37,
+      "edit": "09-09-2022 21:01"
     }
   ]
 }
