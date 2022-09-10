@@ -1,5 +1,5 @@
 .posts-wraper{
-    min-height: 100vh;
+    min-height: 100vh !important;
     padding-top: 70px;
     width: 100%;
     display: flex;
@@ -21,8 +21,10 @@
     align-items: center;
     justify-content: flex-start;
     gap: 5vh;
-    padding-top: 5vh;
-    padding-right: 5vw;
+    padding-top: calc(5vh + 70px);
+    margin-top: -70px;   
+    padding-inline: 2.5vw;
+    background:  rgb(233, 245, 251);
 }
 
 .post-best{
