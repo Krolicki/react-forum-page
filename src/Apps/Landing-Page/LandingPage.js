@@ -16,6 +16,7 @@ import { RequireAuth } from './components/RequireAuth'
 import { EditPost } from './components/EditPost'
 import { Footer } from './components/Footer'
 import { Contact } from './components/Contact'
+import { ChangePassword } from './components/ChangePassword'
 
 const navbarItems = [
     {url: "/", title:"Home"},
@@ -51,6 +52,7 @@ export const LandingPage = () => {
                                 <Route path="/post/:id" element={<Post />} />
                                 <Route path="/newpost" element={<NewPost />} />
                                 <Route path="/editpost/:id" element={<EditPost />} />
+                                <Route path="/changepassword" element={<ChangePassword />} />
                             </Route>
                             <Route path="/about" element={
                                 <About />

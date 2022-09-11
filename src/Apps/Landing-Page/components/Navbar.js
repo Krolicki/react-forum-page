@@ -63,6 +63,11 @@ export const Navbar = ({navbarItems}) => {
             >
                     <FiArrowLeft size={25} className="close-user-menu" onClick={()=>setShowUserMenu(false)} />
                     <p onClick={ ()=> {
+                        
+                    }}> 
+                        Change password
+                    </p>
+                    <p onClick={ ()=> {
                         setAuth({})
                         setShowUserMenu(false) 
                         removeCookie("user", { path:"/" })

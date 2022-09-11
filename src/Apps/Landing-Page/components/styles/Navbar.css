@@ -77,7 +77,6 @@ nav ul{
     right: 2.5vw;
     background-color: rgba(0, 0, 0, 0.703);
     color: white;
-    padding: 1.5em 3em;
     text-align: center;
     opacity: 0;
     transition: opacity .3s;
@@ -88,6 +87,12 @@ nav ul{
 
 .user-menu p{
     cursor: pointer;
+    width: 100%;
+    padding: .75em 1.5em;
+}
+
+.user-menu p:hover{
+    background-color: rgba(255, 255, 255, 0.163);
 }
 
 .user-link{
