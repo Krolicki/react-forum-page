@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import './styles/Navbar.css'
 import {FiX, FiMenu, FiArrowLeft} from "react-icons/fi"
-import {Link, useLocation} from 'react-router-dom'
+import {Link, useLocation, useNavigate} from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 import { useCookies } from 'react-cookie'
 
@@ -18,6 +18,7 @@ export const Navbar = ({navbarItems}) => {
         setMenuClick(!menuClick)
     }
     const location = useLocation()
+    const navigate = useNavigate();
     return(
         <nav onMouseLeave={()=>{setShowUserMenu(false)}} >
             <Link to="/" className="logo">
@@ -63,7 +64,7 @@ export const Navbar = ({navbarItems}) => {
             >
                     <FiArrowLeft size={25} className="close-user-menu" onClick={()=>setShowUserMenu(false)} />
                     <p onClick={ ()=> {
-                        
+                        navigate("/changepassword")
                     }}> 
                         Change password
                     </p>
