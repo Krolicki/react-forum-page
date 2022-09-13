@@ -97,9 +97,14 @@ export const EditPost = () => {
                 <div className="delete-window show-delete-window">
                     <div className="delete-window-content">
                         <h2>Successfully edited post "{title}"</h2>
-                        <Link to={`/posts`} className="delete-window-buttons">
-                            <button type="button">Back to Posts</button>
-                        </Link>
+                        <span className='edited-buttons-wraper'>
+                            <Link to={`/posts`} className="delete-window-buttons">
+                                <button type="button">Back to Posts</button>
+                            </Link>
+                            <Link to={`/post/${post.id}`} className="delete-window-buttons">
+                                <button type="button">Back to this Post</button>
+                            </Link>
+                        </span>
                     </div>
                 </div>
             </section>

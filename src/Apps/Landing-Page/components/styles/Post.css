@@ -20,6 +20,9 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-top: 40px;
+    box-shadow: 0 0 0 20px rgb(167, 210, 248);
+    background-color: rgb(167, 210, 248);
 }
 
 .post-options span{

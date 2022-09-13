@@ -116,7 +116,8 @@
       "id": 10,
       "title": "Post 10",
       "desc": "Officia eiusmod ullamco ut ex.",
-      "date": "23-08-2022"
+      "date": "23-08-2022",
+      "views": 1
     },
     {
       "id": 12,
@@ -217,7 +218,8 @@
       "desc": "fdsafasfas",
       "date": "30-08-2022 18:16",
       "user": "Q123",
-      "id": 28
+      "id": 28,
+      "views": 2
     },
     {
       "title": "Test 13",
@@ -244,7 +246,8 @@
       "date": "30-08-2022 18:31",
       "user": "Q123",
       "id": 31,
-      "views": 18
+      "views": 30,
+      "edit": "13-09-2022 18:32"
     },
     {
       "title": "Test 15",
@@ -253,7 +256,7 @@
       "date": "02-09-2022 17:50",
       "user": "Q123",
       "id": 32,
-      "views": 10
+      "views": 11
     },
     {
       "title": "Test 16",
@@ -280,7 +283,7 @@
       "content": "after add",
       "date": "07-09-2022 21:44",
       "user": "Q123",
-      "views": 2,
+      "views": 3,
       "id": 35
     },
     {
@@ -298,9 +301,18 @@
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in libero posuere, tincidunt est non, tincidunt orci. Proin tristique a ante id faucibus. Ut quis arcu libero. Aenean sed eros quis risus rhoncus vestibulum.",
       "date": "07-09-2022 21:47",
       "user": "Q123",
-      "views": 36,
+      "views": 40,
       "id": 37,
-      "edit": "09-09-2022 21:01"
+      "edit": "13-09-2022 18:32"
+    },
+    {
+      "title": "Test 18",
+      "desc": "Mobile view",
+      "content": "...",
+      "date": "13-09-2022 18:35",
+      "user": "Q123",
+      "views": 3,
+      "id": 38
     }
   ]
 }

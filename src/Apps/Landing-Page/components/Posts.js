@@ -27,7 +27,7 @@ export const Posts = () => {
             setLoading(false) 
         }
         getPosts()
-        if(query.state?.page !== undefined)
+        if(query.state?.page !== undefined && query.state?.page !== null)
             setCurentPage(query.state?.page)
     }, [])
 
