@@ -3,7 +3,7 @@ import './styles/Slider.css'
 
 export const Slider = ({imgSrc, title, subtitle, flip}) => {
 
-    const {ref, inView, entry} = useInView({
+    const {ref, inView} = useInView({
         threshold: 0.1
     })
 
@@ -32,7 +32,7 @@ export const Slider = ({imgSrc, title, subtitle, flip}) => {
     }
 
     return(
-        <div className={`slider ${inView ? 'show-slider' : ''}`} ref={ref} inView>
+        <div className={`slider ${inView ? 'show-slider' : ''}`} ref={ref}>
             {renderContent()}
         </div>
     )
