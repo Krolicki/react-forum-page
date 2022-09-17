@@ -208,12 +208,6 @@ export const ChangePassword = () => {
                             Save changes
                         </button>
                     </form>
-                    <p className='register-under'>
-                        Already registered?
-                        <span className='register-link'>
-                            <Link to="/login">Sing in</Link>
-                        </span>
-                    </p>
                 </div>
             )}
         </div>
