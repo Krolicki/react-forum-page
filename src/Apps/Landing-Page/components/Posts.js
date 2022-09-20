@@ -13,7 +13,7 @@ export const Posts = () => {
     useEffect(() => {
         const getPosts = async () => {
             setLoading(true)
-            const postsList = await fetch("http://localhost:5000/posts")
+            const postsList = await fetch("https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts.json")
                 .then(respsonse => {
                     if (respsonse.ok)
                         return respsonse.json()

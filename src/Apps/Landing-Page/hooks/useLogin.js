@@ -26,6 +26,7 @@ function useLogin(){
                 expires.setTime(expires.getTime() + (10 * 60000)) // 10 minutes
                 setCookie('user', user, { path: '/',  expires})
                 navigate(from, {replace: true})
+                console.log(base_auth.currentUser.email)
             }
         })
         .catch((error)=>{
