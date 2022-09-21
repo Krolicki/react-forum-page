@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react"
 
 export const useGetPost = (id) => {
-    const [post, setPost] = useState([])
+    const [post, setPost] = useState({})
     const [loading, setLoading] = useState(false)
     const [postNotFound, setPostNotFound] = useState(false)
 
     useEffect(()=>{
         const getPost = async (id) => {
             setLoading(true)
-            const postFromAPI = await fetch(`http://localhost:5000/posts/?id=${id}`)
+            const postFromAPI = await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts.json?orderBy=%22id%22&equalTo=${id}`)
                 .then(respsonse => {
                     if (respsonse.ok)
                         return respsonse.json()
@@ -17,8 +17,8 @@ export const useGetPost = (id) => {
                 .catch((err) => {
                     console.log(err)
                 })
-            if(postFromAPI.length !== 0)
-                setPost(postFromAPI[0])
+            if(Object.values(postFromAPI)[0] !== undefined)
+                setPost(Object.values(postFromAPI)[0])
             else
                 setPostNotFound(true)
             setLoading(false)

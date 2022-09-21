@@ -246,7 +246,7 @@
       "date": "30-08-2022 18:31",
       "user": "Q123",
       "id": 31,
-      "views": 32,
+      "views": 33,
       "edit": "13-09-2022 18:32"
     },
     {
@@ -301,7 +301,7 @@
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in libero posuere, tincidunt est non, tincidunt orci. Proin tristique a ante id faucibus. Ut quis arcu libero. Aenean sed eros quis risus rhoncus vestibulum.",
       "date": "07-09-2022 21:47",
       "user": "Q123",
-      "views": 40,
+      "views": 41,
       "id": 37,
       "edit": "13-09-2022 18:32"
     },
@@ -311,7 +311,7 @@
       "content": "...",
       "date": "13-09-2022 18:35",
       "user": "Q123",
-      "views": 3,
+      "views": 4,
       "id": 38
     },
     {
@@ -320,7 +320,7 @@
       "content": ".1",
       "date": "19-09-2022 21:09",
       "user": "Q123",
-      "views": 4,
+      "views": 2,
       "id": 39
     }
   ]
