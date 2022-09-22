@@ -43,7 +43,6 @@ export const NewPost = () => {
 
         if(Object.values(lastPost)[0] !== undefined){
             newPostID = (parseInt(Object.values(lastPost)[0].id)+1)
-            console.log(newPostID)
         }
         if(newPostID !== -1)
             await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts/${newPostID}.json`, {

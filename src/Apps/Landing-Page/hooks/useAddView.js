@@ -3,7 +3,7 @@ export const useAddView = () => {
     const addView = (id, views) => {
         views++
 
-        fetch(`http://localhost:5000/posts/${id}`, {
+        fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts/${id}.json`, {
             method: 'PATCH',
             headers: {
                 'Content-type': 'application/json'
