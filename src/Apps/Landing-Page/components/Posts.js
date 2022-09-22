@@ -45,7 +45,7 @@ export const Posts = () => {
         first = second = third = Number.MIN_VALUE
 
         list.forEach(post => {
-            if(post.views !==undefined){
+            if(post?.views !==undefined){
                 if(post.views > first){
                     third = second;
                     second = first;
@@ -90,6 +90,8 @@ export const Posts = () => {
                 <Link to="/newpost" className='new-post-button'><button>New Post</button></Link>
                 <section className='posts'>
                     {currentPosts.map(post => {
+                        if(post === null)
+                            return <></>
                         return (
                             <div className='post' key={post.id}>
                                 <div className='post-head'>
