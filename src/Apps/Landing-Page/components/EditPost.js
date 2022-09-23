@@ -34,7 +34,7 @@ export const EditPost = () => {
         setErrMsg('')
         let date = new Date()
         let edit = `${('0'+date.getDate()).slice(-2)}-${('0'+(date.getMonth()+1)).slice(-2)}-${date.getFullYear()} ${('0'+date.getHours()).slice(-2)}:${('0'+date.getMinutes()).slice(-2)}`
-        await fetch(`http://localhost:5000/posts/${post.id}`, {
+        await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts/${post.id}.json`, {
             method: 'PATCH',
             headers: {
                 'Content-type': 'application/json'

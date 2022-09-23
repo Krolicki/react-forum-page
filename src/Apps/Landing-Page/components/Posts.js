@@ -13,7 +13,7 @@ export const Posts = () => {
     useEffect(() => {
         const getPosts = async () => {
             setLoading(true)
-            const postsList = await fetch("https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts.json")
+            const postsFromApi = await fetch("https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts.json")
                 .then(respsonse => {
                     if (respsonse.ok)
                         return respsonse.json()
@@ -22,6 +22,9 @@ export const Posts = () => {
                 .catch((err) => {
                     console.log(err)
                 })
+            const postsList = postsFromApi.filter(element => {
+                return element !== null
+            })
             getMostViewed(postsList)
             setPosts(postsList.reverse())
             setLoading(false) 

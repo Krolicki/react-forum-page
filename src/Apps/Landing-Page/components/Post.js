@@ -16,7 +16,7 @@ export const Post = () => {
     const {addView} = useAddView()
 
     const deletePost = async () => {
-        await fetch(`http://localhost:5000/posts/${post.id}`, {
+        await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts/${post.id}.json`, {
             method: 'DELETE',
         })
         .then(respsonse => {
