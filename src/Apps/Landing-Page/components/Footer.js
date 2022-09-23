@@ -25,13 +25,33 @@ export const Footer = () =>{
     const handleSubmit = async (e) => {
         e.preventDefault()
         setErrMsg('')
-        await fetch(`http://localhost:5000/newsletter`, {
-                    method: 'POST',
+        const lastPost = await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/newsletter.json?orderBy=%22id%22&limitToLast=1`)
+        .then(respsonse => {
+            if (respsonse.ok)
+                return respsonse.json()
+            throw respsonse
+        })
+        .catch((err) => {
+            console.log(err)
+            setErrMsg("Sending failed")
+        })
+        let newSub = -1
+        let date = new Date()
+        let subDate = `${('0'+date.getDate()).slice(-2)}-${('0'+(date.getMonth()+1)).slice(-2)}-${date.getFullYear()}`
+
+        if(Object.values(lastPost)[0] !== undefined){
+            newSub = (parseInt(Object.values(lastPost)[0].id)+1)
+        }
+ 
+        await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/newsletter/${newSub}.json`, {
+                    method: 'PUT',
                     headers: {
                         'Content-type': 'application/json'
                     },
                     body: JSON.stringify({
-                        email
+                        email,
+                        id: newSub,
+                        date: subDate
                     })
         })
         .then((response) => {
@@ -47,7 +67,7 @@ export const Footer = () =>{
                 setErrMsg("No server response")
             }
             else{
-                setErrMsg("Sending post failed")
+                setErrMsg("Sending failed")
             }
         })
     }
