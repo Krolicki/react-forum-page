@@ -26,52 +26,14 @@ function useLogin(){
                 expires.setTime(expires.getTime() + (10 * 60000)) // 10 minutes
                 setCookie('user', user, { path: '/',  expires})
                 navigate(from, {replace: true})
-                console.log(base_auth.currentUser.email)
             }
         })
         .catch((error)=>{
-            setError(error.code)
+            setError(error.code.slice(5,error.code.length).replace(/-/g," "))
         })
         .finally(()=>{
             setLoading(false)
         })
-            // if(response.ok){
-            //     setAuth({user, pwd})
-            //     let expires = new Date()
-            //     expires.setTime(expires.getTime() + (10 * 60000)) // 10 minutes
-            //     setCookie('user', user, { path: '/',  expires})
-            //     navigate(from, {replace: true})
-            // }
-            // else{
-            //     setError("Wrong username or password")
-            // }
-
-
-        // await fetch(`http://localhost:5000/users/?user=${user}&pwd=${pwd}`)
-        //     .then((response) => {
-        //         if(response.ok)
-        //             return response
-        //         throw response
-        //     })
-        //     .then(response => response.json())
-        //     .then(response => {
-        //         if(response.length !== 0){
-        //             setAuth({user, pwd})
-        //             let expires = new Date()
-        //             expires.setTime(expires.getTime() + (10 * 60000)) // 10 minutes
-        //             setCookie('user', user, { path: '/',  expires})
-        //             navigate(from, {replace: true})
-        //         }
-        //         else{
-        //             setError("Wrong username or password")
-        //         }
-        //     })
-        //     .catch(()=>{
-        //         setError(`No connection to server`)
-        //     })
-        //     .finally(()=>{
-        //         setLoading(false)
-        //     })
     }
 
     return {login, loading, error}

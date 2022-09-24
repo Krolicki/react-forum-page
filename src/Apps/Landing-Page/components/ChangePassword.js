@@ -5,6 +5,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { useRef , useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import { base_auth }  from '../firebase/base'
+import {updatePassword, EmailAuthProvider, reauthenticateWithCredential} from "firebase/auth"
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
@@ -64,64 +66,51 @@ export const ChangePassword = () => {
             return
         }
 
-        try{
-            setLoading(true)
-            const currentUserData = await fetch(`http://localhost:5000/users/?user=${user}`)
-                .then(respsonse => {
-                    if (respsonse.ok)
-                        return respsonse.json()
-                    throw respsonse
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
+        setLoading(true)
 
-            if(currentUserData.length !== 0){
-                if(currentUserData[0].pwd === oldPass){
-                    await fetch(`http://localhost:5000/users/${currentUserData[0].id}`, {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            pwd
-                        })
-                    })
-                    .then(respsonse => {
-                        if(respsonse.ok){
-                            setSuccess(true)
-                            return respsonse
-                        }
-                        throw respsonse
-                    })
-                    .catch(err => {
-                        console.log(err)
-                        if(!err?.response){
-                            setErrMsg("No server response")
-                        }
-                        else{
-                            setErrMsg("Sending post failed")
-                        }
-                    })
-                }
-                else{
-                    setErrMsg("Old password is incorrect!")
-                }
-            }
-            else
-                setErrMsg("There is some issue on server. Try again later.")
-            setLoading(false)
-        }
-        catch(err){
-            if(!err?.response){
+        let credentials = EmailAuthProvider.credential(
+            base_auth.currentUser.email,
+            oldPass
+        )
+
+        let invOldPass = true
+
+        await reauthenticateWithCredential(
+            base_auth.currentUser,
+            credentials   
+        )
+        .then(() => {
+            setInvalidOldPass(false)
+            invOldPass = false
+        })
+        .catch(err => {
+            if(!err?.code){
                 setErrMsg("No server response")
             }
             else{
-                setErrMsg("Sending data failed")
-            }
-            errRef.current.focus()
+                setErrMsg(err.code.slice(5,err.code.length).replace(/-/g," "))
+            } 
+            setInvalidOldPass(true)
+            invOldPass= true
+            return
+        })
+
+        if(!invOldPass){
+            updatePassword(base_auth.currentUser, pwd)
+            .then(() => {
+                setSuccess(true)
+            })
+            .catch(err => {
+                if(!err?.code){
+                    setErrMsg("No server response")
+                }
+                else{
+                    setErrMsg(err.code.slice(5,err.code.length).replace(/-/g," "))
+                }
+            })
         }
 
+        setLoading(false)
     }
     return(
         <div className='changepass-container'>

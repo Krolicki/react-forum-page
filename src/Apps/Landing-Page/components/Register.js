@@ -3,6 +3,8 @@ import {faCheck, faTimes, faInfoCircle} from "@fortawesome/free-solid-svg-icons"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { useRef , useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import { base_auth }  from '../firebase/base'
+import { createUserWithEmailAndPassword } from "firebase/auth"
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -57,22 +59,16 @@ export const Register = () =>{
         }
 
         try{
-            const checkUsername = await fetch(`http://localhost:5000/users/?user=${user}`)
-                .then((response)=> {return response.json()})
-            if(checkUsername.length === 0){
-                const response = await fetch(`http://localhost:5000/users`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-type': 'application/json'
-                    },
-                    body: JSON.stringify({user, pwd})
-                })
-                const data = await response.json()
-                setSuccess(true)
-            }
-            else{
-                setErrMsg("This username is not available")
-            }
+            createUserWithEmailAndPassword(base_auth,`${user}@lp.pl`,pwd)
+            .then((response)=>{
+                console.log(response)
+                if(response.user.email !== undefined || response.user.email !== null){
+                    setSuccess(true)
+                }
+            })
+            .catch((error)=>{
+                setErrMsg((error.code).slice(5,error.code.length).replace(/-/g," ").replace("email","Username"))
+            })
         }
         catch(err){
             if(!err?.response){
