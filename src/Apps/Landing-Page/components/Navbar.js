@@ -4,6 +4,8 @@ import {FiX, FiMenu, FiArrowLeft} from "react-icons/fi"
 import {Link, useLocation, useNavigate} from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 import { useCookies } from 'react-cookie'
+import { signOut } from "firebase/auth"
+import { base_auth }  from '../firebase/base'
 
 
 export const Navbar = ({navbarItems}) => {
@@ -70,6 +72,9 @@ export const Navbar = ({navbarItems}) => {
                     </p>
                     <p onClick={ ()=> {
                         setAuth({})
+                        signOut(base_auth)
+                            .then(()=>{})
+                            .catch(err=>console.log(err))
                         setShowUserMenu(false) 
                         removeCookie("user", { path:"/" })
                     }}> 
