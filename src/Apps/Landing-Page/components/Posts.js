@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useOutletContext } from 'react-router-dom'
 import { Pagination } from './Pagination'
 import './styles/Posts.css'
 
@@ -9,11 +9,13 @@ export const Posts = () => {
     const [currentPage, setCurentPage] = useState(1)
     const [postsPerPage] = useState(5)
     const query = useLocation()
+    const uid = useOutletContext()
 
     useEffect(() => {
         const getPosts = async () => {
             setLoading(true)
-            const postsFromApi = await fetch("https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts.json")
+
+            const postsFromApi = await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts.json?auth=${uid}`)
                 .then(respsonse => {
                     if (respsonse.ok)
                         return respsonse.json()

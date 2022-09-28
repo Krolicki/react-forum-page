@@ -6,6 +6,7 @@ import { base_auth }  from '../firebase/base'
 export const RequireAuth = () => {
     //const {auth} = useAuth()
     const location = useLocation()
+    const uid = base_auth.currentUser.accessToken
     // const [cookies] = useCookies()
     // let user = null
     // console.log(base_auth.currentUser)
@@ -19,7 +20,7 @@ export const RequireAuth = () => {
     //     user = auth?.user
     return(
         base_auth.currentUser !== null
-          ? <Outlet />
+          ? <Outlet context={uid}/>
           : <Navigate to="/login" state={{from: location}} replace />
     )
 }

@@ -1,6 +1,6 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, {useState} from 'react'
+import {useState} from 'react'
 import { MenuItems } from './MenuItems';
 
 export const Navigation = () => {
