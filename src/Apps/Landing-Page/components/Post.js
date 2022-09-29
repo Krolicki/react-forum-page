@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link, useLocation, useParams } from "react-router-dom"
+import { Link, useLocation, useParams, useOutletContext } from "react-router-dom"
 import { useAddView } from "../hooks/useAddView"
 import { useGetPost } from "../hooks/useGetPost"
 import "./styles/Post.css"
@@ -12,11 +12,13 @@ export const Post = () => {
     const [animateDeleteWindow, setAnimateDeleteWindow] = useState(false)
     const [postDeleted, setPostDeleted] = useState(false)
 
+    const uid = useOutletContext()
+
     const {post, loading, postNotFound} = useGetPost(id)
     const {addView} = useAddView()
 
     const deletePost = async () => {
-        await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts/${post.id}.json`, {
+        await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts/${post.id}.json?auth=${uid}`, {
             method: 'DELETE',
         })
         .then(respsonse => {

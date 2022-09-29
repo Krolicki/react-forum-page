@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react"
+import { useOutletContext } from 'react-router-dom'
 
 export const useGetPost = (id) => {
     const [post, setPost] = useState({})
     const [loading, setLoading] = useState(false)
     const [postNotFound, setPostNotFound] = useState(false)
+    const uid = useOutletContext()
 
     useEffect(()=>{
         const getPost = async (id) => {
             setLoading(true)
-            const postFromAPI = await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts.json?orderBy=%22id%22&equalTo=${id}`)
+            const postFromAPI = await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts.json?orderBy=%22id%22&equalTo=${id}&auth=${uid}`)
                 .then(respsonse => {
                     if (respsonse.ok)
                         return respsonse.json()

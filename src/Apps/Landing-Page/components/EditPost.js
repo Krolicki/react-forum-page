@@ -3,6 +3,7 @@ import './styles/NewPost.css'
 import { Link, useParams } from "react-router-dom"
 import { useEffect, useRef, useState } from 'react'
 import { useGetPost } from '../hooks/useGetPost'
+import { useOutletContext } from 'react-router-dom'
 
 export const EditPost = () => {
     const {id} = useParams()
@@ -12,6 +13,8 @@ export const EditPost = () => {
     const [edited, setEdited] = useState(false)
     const [sending, setSending] = useState(false)
     const [errMsg, setErrMsg] = useState('')
+
+    const uid = useOutletContext()
 
     const {post, loading, postNotFound} = useGetPost(id)
 
@@ -34,7 +37,7 @@ export const EditPost = () => {
         setErrMsg('')
         let date = new Date()
         let edit = `${('0'+date.getDate()).slice(-2)}-${('0'+(date.getMonth()+1)).slice(-2)}-${date.getFullYear()} ${('0'+date.getHours()).slice(-2)}:${('0'+date.getMinutes()).slice(-2)}`
-        await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts/${post.id}.json`, {
+        await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts/${post.id}.json?auth=${uid}`, {
             method: 'PATCH',
             headers: {
                 'Content-type': 'application/json'

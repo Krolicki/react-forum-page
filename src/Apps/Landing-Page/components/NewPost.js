@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import "./styles/NewPost.css"
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import useAuth from "../hooks/useAuth";
 
 export const NewPost = () => {
@@ -19,6 +19,8 @@ export const NewPost = () => {
 
     const {auth} = useAuth()
 
+    const uid = useOutletContext()
+
     useEffect(()=>{
         titleRef.current.focus()
     },[])
@@ -27,7 +29,7 @@ export const NewPost = () => {
         e.preventDefault()
         setSending(true)
         setErrMsg('')
-        const lastPost = await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts.json?orderBy=%22id%22&limitToLast=1`)
+        const lastPost = await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts.json?orderBy=%22id%22&limitToLast=1&auth=${uid}`)
         .then(respsonse => {
             if (respsonse.ok)
                 return respsonse.json()
@@ -45,7 +47,7 @@ export const NewPost = () => {
             newPostID = (parseInt(Object.values(lastPost)[0].id)+1)
         }
         if(newPostID !== -1)
-            await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts/${newPostID}.json`, {
+            await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts/${newPostID}.json?auth=${uid}`, {
                             method: 'PUT',
                             headers: {
                                 'Content-type': 'application/json'
