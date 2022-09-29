@@ -10,7 +10,6 @@ function useLogin(){
     const [loading, setLoading] = useState(false)
     const [error, setError] =  useState(null) 
     const {setAuth} = useAuth()
-
     const navigate = useNavigate()
 
     const [, setCookie] = useCookies(['user'])
@@ -25,6 +24,7 @@ function useLogin(){
                 let expires = new Date()
                 expires.setTime(expires.getTime() + (10 * 60000)) // 10 minutes
                 setCookie('user', user, { path: '/',  expires})
+                setCookie('uid', response.user.accessToken, { path: '/',  expires})
                 navigate(from, {replace: true})
             }
         })

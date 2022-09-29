@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {getAuth, createUserWithEmailAndPassword} from "firebase/auth"
+import {getAuth } from "firebase/auth"
 
 const base_app = initializeApp({
   apiKey: "AIzaSyAmVZkuTzJ1dvRCJeArrGUkHoAWZOj7pw0",
@@ -13,7 +13,3 @@ const base_app = initializeApp({
 export const base_auth = getAuth(base_app)
 
 export default base_app
-
-export const register = (login, pass) =>{
-  return createUserWithEmailAndPassword(base_auth, `${login}@lp.pl`, pass)
-}

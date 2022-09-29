@@ -2,7 +2,7 @@
 
 **Projects in this repository:**
 
-- LandingPage - "Landing" page with **login, registration, router, posts page**
+- LandingPage - "Landing" page with **login, registration, router, posts page**. Works on **Firebase**
 - Task tracker
 - workshop - for testing
 
@@ -11,7 +11,7 @@ To start:
 npm start
 ```
 
-***Project requires JSON Server***
+***Some projects requires local JSON Server***
 ```
 npm run server
 ```
