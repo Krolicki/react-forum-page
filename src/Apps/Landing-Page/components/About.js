@@ -1,7 +1,12 @@
 import './styles/About.css'
 import image from '../assets/3.jpg'
+import { useEffect } from 'react'
 
 export const About = () =>{
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
     return (
         <div className='about-container'>
             <div className='about-head'>

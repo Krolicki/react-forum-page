@@ -57,6 +57,7 @@ export const Post = () => {
                 addView(post.id, 0)
             }
         }
+        window.scrollTo(0, 0)
     },[post])
 
     if (loading) {

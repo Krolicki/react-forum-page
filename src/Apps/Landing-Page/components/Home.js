@@ -4,10 +4,12 @@ import image1 from '../assets/1.jpg'
 import image2 from '../assets/2.jpg'
 import image3 from '../assets/3.jpg'
 import { MidSection } from "./MidSection"
-import useAuth from "../hooks/useAuth"
+import { useEffect } from "react"
 
 export const Home = () => {
-    const {auth} = useAuth()
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
     return(
         <>

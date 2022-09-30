@@ -77,6 +77,7 @@ export const Navbar = ({navbarItems}) => {
                             .catch(err=>console.log(err))
                         setShowUserMenu(false) 
                         removeCookie("user", { path:"/" })
+                        navigate("/")
                     }}> 
                         Logout
                     </p>
