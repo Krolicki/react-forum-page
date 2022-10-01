@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { useRef , useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { base_auth }  from '../firebase/base'
-import { createUserWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword , signOut} from "firebase/auth"
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -48,6 +48,36 @@ export const Register = () =>{
         setErrMsg('')
     },[user, pwd, matchPwd])
 
+    const createUserInfo = async (uid, email) => {
+        await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/users/${user.toLowerCase()}.json?auth=${uid}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: user,
+                email,
+            })
+        })
+        .then((response) => {
+            if(response.ok){
+                setSuccess(true)
+                signOut(base_auth)
+            }
+            else
+                throw response
+        })
+        .catch((err)=>{
+            console.log(err)
+            if(!err?.response){
+                setErrMsg("No server response")
+            }
+            else{
+                setErrMsg("Registration failed")
+            }
+        })
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         const v1 = USER_REGEX.test(user)
@@ -61,13 +91,14 @@ export const Register = () =>{
         try{
             createUserWithEmailAndPassword(base_auth,`${user}@lp.pl`,pwd)
             .then((response)=>{
-                console.log(response)
-                if(response.user.email !== undefined || response.user.email !== null){
-                    setSuccess(true)
+                if(response.user !== undefined && response.user !== null){
+                   createUserInfo(response.user.accessToken, response.user.email)
                 }
+                else
+                    throw response
             })
             .catch((error)=>{
-                setErrMsg((error.code).slice(5,error.code.length).replace(/-/g," ").replace("email","Username"))
+                setErrMsg((error?.code).slice(5,error.code.length).replace(/-/g," ").replace("email","Username"))
             })
         }
         catch(err){
