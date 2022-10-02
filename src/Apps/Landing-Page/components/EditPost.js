@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom"
 import { useEffect, useRef, useState } from 'react'
 import { useGetPost } from '../hooks/useGetPost'
 import { useOutletContext } from 'react-router-dom'
+import { Loader } from './Loader'
 
 export const EditPost = () => {
     const {id} = useParams()
@@ -71,11 +72,7 @@ export const EditPost = () => {
     }
 
     if (loading) {
-        return (
-            <div className='posts-container'>
-                <h1>Loading post...</h1>
-            </div>
-        )
+        return <Loader title={"Loading edit page..."} />
     }
 
     if (postNotFound) {

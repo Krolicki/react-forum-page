@@ -18,6 +18,7 @@ export const Login = () => {
     
     useEffect(()=>{
         userRef.current.focus()
+        window.scrollTo(0, 0)
     },[])
 
     useEffect(()=>{

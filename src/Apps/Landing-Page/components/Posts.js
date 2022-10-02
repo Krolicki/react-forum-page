@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useOutletContext } from 'react-router-dom'
+import { Loader } from './Loader'
 import { Pagination } from './Pagination'
 import './styles/Posts.css'
 
@@ -34,6 +35,8 @@ export const Posts = () => {
         getPosts()
         if(query.state?.page !== undefined && query.state?.page !== null)
             setCurentPage(query.state?.page)
+
+        window.scrollTo(0, 0)
     }, [])
 
     const indexLastPost = currentPage * postsPerPage
@@ -76,11 +79,7 @@ export const Posts = () => {
     }
 
     if (loading) {
-        return (
-            <div className='posts-container'>
-                <h1>Loading posts...</h1>
-            </div>
-        )
+        return <Loader title={"Loading posts..."} />
     }
 
     return (

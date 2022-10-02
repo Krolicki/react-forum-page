@@ -4,6 +4,7 @@ import { useAddView } from "../hooks/useAddView"
 import { useGetPost } from "../hooks/useGetPost"
 import "./styles/Post.css"
 import "./styles/Posts.css"
+import { Loader } from "./Loader"
 
 export const Post = () => {
     const {id} = useParams()
@@ -61,11 +62,7 @@ export const Post = () => {
     },[post])
 
     if (loading) {
-        return (
-            <div className='posts-container'>
-                <h1>Loading posts...</h1>
-            </div>
-        )
+        return <Loader title={`Loading post ${id}...`} />
     }
 
     if (postNotFound) {

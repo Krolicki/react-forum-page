@@ -1,17 +1,26 @@
 import { useEffect } from "react"
 import { useState } from "react"
 import { Navigate, Outlet, useLocation } from "react-router-dom"
-//import useAuth from "../hooks/useAuth"
+import useAuth from "../hooks/useAuth"
 import { base_auth }  from '../firebase/base'
+import { signOut } from "firebase/auth"
 
 function RenderAuth({user}){
     const location = useLocation()
-    
-    return(
-        user !== null && user !== undefined
-          ? <Outlet context={user}/>
-          : <Navigate to="/login" state={{from: location}} replace />
-    )
+    const {auth} = useAuth()
+
+    if(user !== null && user !== undefined){
+        if(auth.user !== undefined )
+            return <Outlet context={user.accessToken}/>
+        else
+            signOut()
+    }
+    return <Navigate to="/login" state={{from: location}} replace />
+    // return(
+    //     user !== null && user !== undefined
+    //       ? <Outlet context={user}/>
+    //       : <Navigate to="/login" state={{from: location}} replace />
+    // )
 }
 
 
@@ -22,7 +31,7 @@ export const RequireAuth = () => {
     useEffect(()=>{
         base_auth.onAuthStateChanged((user) => {
             if (user) {
-                setUser(base_auth.currentUser.accessToken)
+                setUser(base_auth.currentUser)
             }
             else{
                 setUser(null)
