@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
-import { Link, useLocation, useParams, useOutletContext } from "react-router-dom"
+import { Link, useLocation, useParams, useOutletContext, useNavigate } from "react-router-dom"
 import { useAddView } from "../hooks/useAddView"
 import { useGetPost } from "../hooks/useGetPost"
 import "./styles/Post.css"
 import "./styles/Posts.css"
 import { Loader } from "./Loader"
+import useAuth from "../hooks/useAuth"
 
 export const Post = () => {
     const {id} = useParams()
@@ -12,26 +13,32 @@ export const Post = () => {
     const [showDeleteWindow, setShowDeleteWindow] = useState(false)
     const [animateDeleteWindow, setAnimateDeleteWindow] = useState(false)
     const [postDeleted, setPostDeleted] = useState(false)
+    const navigate = useNavigate()
 
     const uid = useOutletContext()
+    const {auth} = useAuth()
 
     const {post, loading, postNotFound} = useGetPost(id)
     const {addView} = useAddView()
 
     const deletePost = async () => {
-        await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts/${post.id}.json?auth=${uid}`, {
-            method: 'DELETE',
-        })
-        .then(respsonse => {
-            if(respsonse.ok){
-                setPostDeleted(true)
-                return respsonse
-            }
-            throw respsonse
-        })
-        .catch(err => {
-            console.log(err)
-        })
+        if(auth.user === post.user)
+            await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts/${post.id}.json?auth=${uid}`, {
+                method: 'DELETE',
+            })
+            .then(respsonse => {
+                if(respsonse.ok){
+                    setPostDeleted(true)
+                    return respsonse
+                }
+                throw respsonse
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        else
+            navigate("/posts", {replace: true})
+            
     }
 
     const showHideDeleteWindow = (showHide) => {
@@ -101,8 +108,8 @@ export const Post = () => {
                         <button type="button">Back to Posts</button>
                     </Link>
                     <span>
-                        <button type="button" onClick={()=>showHideDeleteWindow(true)}>Delete post</button>
-                        <Link to={`/editpost/${post.id}`}>
+                        <button type="button" onClick={()=>showHideDeleteWindow(true)} className={post.user === auth.user ? "" : "button-disabled"}>Delete post</button>
+                        <Link to={`/editpost/${post.id}`} className={post.user === auth.user ? "" : "button-disabled"}>
                             <button type="button">Edit post</button>
                         </Link>
                     </span>

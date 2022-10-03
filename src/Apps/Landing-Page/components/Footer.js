@@ -13,7 +13,7 @@ export const Footer = () =>{
     const [errMsg, setErrMsg] = useState('')
 
     const handleChange = event => {
-        if (!EMAIL_REGEX.test(event.target.value)) {
+        if (!EMAIL_REGEX.test(event.target.value) && event.target.value !== "") {
             setInvalidEmail(true)
         } 
         else {

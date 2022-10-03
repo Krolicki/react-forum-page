@@ -13,7 +13,7 @@ function RenderAuth({user}){
         if(auth.user !== undefined )
             return <Outlet context={user.accessToken}/>
         else
-            signOut()
+            signOut(base_auth)
     }
     return <Navigate to="/login" state={{from: location}} replace />
     // return(

@@ -3,8 +3,9 @@ import './styles/NewPost.css'
 import { Link, useParams } from "react-router-dom"
 import { useEffect, useRef, useState } from 'react'
 import { useGetPost } from '../hooks/useGetPost'
-import { useOutletContext } from 'react-router-dom'
+import { useOutletContext, useNavigate } from 'react-router-dom'
 import { Loader } from './Loader'
+import useAuth from "../hooks/useAuth"
 
 export const EditPost = () => {
     const {id} = useParams()
@@ -14,8 +15,10 @@ export const EditPost = () => {
     const [edited, setEdited] = useState(false)
     const [sending, setSending] = useState(false)
     const [errMsg, setErrMsg] = useState('')
+    const navigate = useNavigate()
 
     const uid = useOutletContext()
+    const {auth} = useAuth()
 
     const {post, loading, postNotFound} = useGetPost(id)
 
@@ -23,6 +26,8 @@ export const EditPost = () => {
     const titleRef = useRef()
 
     useEffect(()=>{
+        if(auth.user !== post.user)
+            navigate("/posts", {replace: true})
         titleRef.current.focus()
     },[])
 
@@ -36,39 +41,46 @@ export const EditPost = () => {
         e.preventDefault()
         setSending(true)
         setErrMsg('')
-        let date = new Date()
-        let edit = `${('0'+date.getDate()).slice(-2)}-${('0'+(date.getMonth()+1)).slice(-2)}-${date.getFullYear()} ${('0'+date.getHours()).slice(-2)}:${('0'+date.getMinutes()).slice(-2)}`
-        await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts/${post.id}.json?auth=${uid}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                title, 
-                desc,
-                content,
-                edit
+
+        if(auth.user === post.user){
+            let date = new Date()
+            let edit = `${('0'+date.getDate()).slice(-2)}-${('0'+(date.getMonth()+1)).slice(-2)}-${date.getFullYear()} ${('0'+date.getHours()).slice(-2)}:${('0'+date.getMinutes()).slice(-2)}`
+            await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts/${post.id}.json?auth=${uid}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title, 
+                    desc,
+                    content,
+                    edit
+                })
             })
-        })
-        .then(respsonse => {
-            if(respsonse.ok){
-                setEdited(true)
-                return respsonse
-            }
-            throw respsonse
-        })
-        .catch(err => {
-            console.log(err)
-            if(!err?.response){
-                setErrMsg("No server response")
-            }
-            else{
-                setErrMsg("Sending post failed")
-            }
-        })
-        .finally(()=>{
+            .then(respsonse => {
+                if(respsonse.ok){
+                    setEdited(true)
+                    return respsonse
+                }
+                throw respsonse
+            })
+            .catch(err => {
+                console.log(err)
+                if(!err?.response){
+                    setErrMsg("No server response")
+                }
+                else{
+                    setErrMsg("Sending post failed")
+                }
+            })
+            .finally(()=>{
+                setSending(false)
+            })
+        }
+        else{
+            setErrMsg("Unauthorized")
             setSending(false)
-        })
+        }
     }
 
     if (loading) {

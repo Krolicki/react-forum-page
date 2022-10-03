@@ -30,6 +30,12 @@
     gap: 10px;
 }
 
+.button-disabled{
+    pointer-events: none !important;
+    cursor:not-allowed !important;
+    opacity: .6;
+}
+
 .delete-window{
     z-index: 999;
     position: fixed;
