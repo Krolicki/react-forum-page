@@ -26,8 +26,6 @@ export const EditPost = () => {
     const titleRef = useRef()
 
     useEffect(()=>{
-        if(auth.user !== post.user)
-            navigate("/posts", {replace: true})
         titleRef.current.focus()
     },[])
 
@@ -35,6 +33,8 @@ export const EditPost = () => {
         setTitle(post.title)
         setDesc(post.desc)
         setContent(post.content)
+        if(auth.user !== post.user && post.user !== undefined)
+            navigate("/posts", {replace: true})
     },[post])
 
     const handleSubmit = async (e) => {

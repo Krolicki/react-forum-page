@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import './styles/Navbar.css'
-import {FiX, FiMenu, FiArrowLeft} from "react-icons/fi"
+import {FiX, FiMenu, FiArrowRight} from "react-icons/fi"
 import {Link, useLocation, useNavigate} from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 import { useCookies } from 'react-cookie'
@@ -18,6 +18,8 @@ export const Navbar = ({navbarItems}) => {
 
     const toggleMenuClick = () => {
         setMenuClick(!menuClick)
+        if(showUserMenu === true)
+            setShowUserMenu(false)
     }
     const location = useLocation()
     const navigate = useNavigate();
@@ -64,8 +66,16 @@ export const Navbar = ({navbarItems}) => {
                 className={`user-menu ${showUserMenu ? "show-user-menu" : ""}`}
                 onMouseLeave={()=>{setShowUserMenu(false)  }}   
             >
-                    <FiArrowLeft size={25} className="close-user-menu" onClick={()=>setShowUserMenu(false)} />
+                    <FiArrowRight size={25} className="close-user-menu" onClick={()=>setShowUserMenu(false)} />
+                    <p onClick={()=>{
+                        setShowUserMenu(false)
+                        setMenuClick(false)
+                    }}>
+                        My profile
+                    </p>
                     <p onClick={ ()=> {
+                        setShowUserMenu(false)
+                        setMenuClick(false)
                         navigate("/changepassword")
                     }}> 
                         Change password
@@ -76,6 +86,7 @@ export const Navbar = ({navbarItems}) => {
                             .then(()=>{})
                             .catch(err=>console.log(err))
                         setShowUserMenu(false) 
+                        setMenuClick(false)
                         removeCookie("user", { path:"/" })
                         navigate("/")
                     }}> 
