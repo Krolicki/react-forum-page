@@ -40,7 +40,7 @@ export const LandingPage = () => {
     },[])
 
     return (
-        <div>
+        <div className='landing-page-wraper'>
                 <BrowserRouter >              
                     <Navbar navbarItems={navbarItems} />
                         <Routes>

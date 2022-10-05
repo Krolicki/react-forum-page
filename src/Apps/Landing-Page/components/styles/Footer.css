@@ -21,7 +21,7 @@ footer{
     display: block;
     background: rgb(255,255,255);
     background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgb(195, 225, 251) 40%);
-    margin-block: 5vh;
+    margin: 5vh auto;
 }
 
 .footer-content{
@@ -120,6 +120,8 @@ footer{
     }
 
     .footer-contact{
+        flex-direction: column;
+        gap: 5vh;
         width: 100%;
         align-items: flex-start;
         justify-content: space-between;
@@ -142,18 +144,18 @@ footer{
     }
 
     .footer-newsletter{
-        margin-inline: 5vw;
-        padding-block: 5vh;
-        gap: 1vh
+        margin: 2.5vh 3vw;
+        padding: 3vh 3vw;
     }
 }
 
 @media screen and (max-width: 590px){
     .footer-contact{
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 40px
+   
+        display: grid;
+        justify-items: center;
+        grid-template-columns: 1fr;
+        gap: 5vh;
     }
     .footer-icon{
         max-width: 40vw;

@@ -5,3 +5,9 @@
     font-family: 'Montserrat', 'sans-serif';
     scroll-behavior: smooth;
 }
+
+.landing-page-wraper{
+    width: 100%;
+    overflow-x: hidden;
+    
+}

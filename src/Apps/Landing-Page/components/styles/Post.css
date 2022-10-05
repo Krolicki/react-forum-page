@@ -1,10 +1,9 @@
 .post-container{
     width: 100%;
     min-height: 100vh;
-    padding-block: 70px;
+    padding: 70px 5vw;
     display: flex;
     align-items: flex-start;
-    padding-inline: 5vw;
     margin-right: auto;
     flex-direction: column;
 }

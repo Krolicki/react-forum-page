@@ -1,9 +1,7 @@
 .slider{
     display: flex;
     width: 80vw;
-    margin-inline: auto;
-    align-items: center;
-    margin-block: 100px;
+    margin: 100px auto;
     opacity: 0;
     transform: translateY(10%);
     transition: 1s  ease-out;
@@ -36,6 +34,9 @@
     .slider{
         flex-direction: column;
         background-color: rgb(217, 217, 217);
+        margin: 50px auto;
+        width: 90%;
+        box-shadow: 6px 6px 0 1px rgb(110, 110, 110);
         
     }
 
