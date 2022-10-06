@@ -35,6 +35,7 @@ export const EditPost = () => {
         setContent(post.content)
         if(auth.user !== post.user && post.user !== undefined)
             navigate("/posts", {replace: true})
+        window.scrollTo(0, 0)
     },[post])
 
     const handleSubmit = async (e) => {

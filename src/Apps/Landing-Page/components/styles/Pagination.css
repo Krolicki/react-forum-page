@@ -38,3 +38,10 @@
     color:rgb(27, 126, 212);
     text-decoration: underline;
 }
+
+@media screen and (max-width: 920px){
+    .pages-list{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
