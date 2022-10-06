@@ -17,6 +17,7 @@ import { EditPost } from './components/EditPost'
 import { Footer } from './components/Footer'
 import { Contact } from './components/Contact'
 import { ChangePassword } from './components/ChangePassword'
+import { Profile } from './components/Profile'
 
 const navbarItems = [
     {url: "/", title:"Home"},
@@ -53,6 +54,7 @@ export const LandingPage = () => {
                                 <Route path="/newpost" element={<NewPost />} />
                                 <Route path="/editpost/:id" element={<EditPost />} />
                                 <Route path="/changepassword" element={<ChangePassword />} />
+                                <Route path="/profile" element={<Profile />} />
                             </Route>
                             <Route path="/about" element={
                                 <About />

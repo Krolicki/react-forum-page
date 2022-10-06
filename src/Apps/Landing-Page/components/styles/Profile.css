@@ -1,0 +1,13 @@
+.profile-container{
+    padding: 120px 5vw 50px;
+    height: 100vh;
+
+}
+
+.profile-span > p{
+    display: inline;
+}
+
+.profile-span a{
+    color: black;
+}
