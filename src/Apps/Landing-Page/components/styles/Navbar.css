@@ -104,10 +104,14 @@ nav ul{
 
 .show-user-menu{
     opacity: 1;
+    pointer-events: all;
 }
 
 .close-user-menu{
     display: none;
+}
+.disable-menu{
+    pointer-events: none;
 }
 
 @media screen and (max-width: 920px){

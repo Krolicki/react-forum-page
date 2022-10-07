@@ -63,7 +63,7 @@ export const Navbar = ({navbarItems}) => {
             </ul>
             <span 
                 ref={userMenu}
-                className={`user-menu ${showUserMenu ? "show-user-menu" : ""}`}
+                className={`user-menu ${showUserMenu ? "show-user-menu" : "disable-menu"}`}
                 onMouseLeave={()=>{setShowUserMenu(false)  }}   
             >
                     <FiArrowRight size={25} className="close-user-menu" onClick={()=>setShowUserMenu(false)} />
