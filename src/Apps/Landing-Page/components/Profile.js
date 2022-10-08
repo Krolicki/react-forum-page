@@ -10,7 +10,7 @@ import { FiArrowLeft } from "react-icons/fi"
 export const Profile = () => {
     const {auth} = useAuth()
     const uid = useOutletContext()
-    const [loading, setLoading] = useState()
+    const [loading, setLoading] = useState(true)
 
     const [allUserPosts, setAllUserPosts] = useState()
     const [currentPage, setCurentPage] = useState(1)
@@ -20,27 +20,38 @@ export const Profile = () => {
     const [bestPost, setBestPost] = useState(null)
     const [totalViews, setTottalViews] = useState()
 
+    const [userProfile, setUserProfile] = useState(null)
+
     const [showAllPosts, setShowAllPosts] = useState(false)
 
     useEffect(()=>{
-
-        const getUserPosts = async () => {
+        const getUserProfile = async () => {
             setLoading(true)
             const postsFromAPI = await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts.json?orderBy=%22user%22&equalTo=%22${auth.user}%22&auth=${uid}`)
-                .then(respsonse => {
-                    if (respsonse.ok)
-                        return respsonse.json()
-                    throw respsonse
+                .then(response => {
+                    if (response.ok)
+                        return response.json()
+                    throw response
                 })
-                .then(respsonse=>{
-                   // setTotalPosts(Object.values(respsonse).length)
-                    //console.log(totalPosts)
-                    //setLastPost(Object.values(respsonse)[totalPosts - 1])
-                    return Object.values(respsonse)
+                .then(response=>{
+                    return Object.values(response)
                 })
                 .catch((err) => {
                     console.log(err)
                 })
+                const userProfileFromAPI = await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/users/${auth.user.toLowerCase()}.json?auth=${uid}`)
+                .then(response => {
+                    if (response.ok)
+                        return response.json()
+                    throw response
+                })
+                .then(response=>{
+                    return response
+                })
+                .catch((err) => {
+                    console.log(err)
+                }) 
+                setUserProfile(userProfileFromAPI)
                 setAllUserPosts(postsFromAPI)
                 let total = postsFromAPI.length
                 setTotalPosts(total)
@@ -57,9 +68,9 @@ export const Profile = () => {
                 })
                 setBestPost(tempBestPost)
                 setTottalViews(sumTotalViews)
-            setLoading(false)
+                setLoading(false)
         }
-        getUserPosts()
+        getUserProfile()
     },[])
 
     if (loading) {
@@ -133,6 +144,8 @@ export const Profile = () => {
                 <h1>User: {auth.user}</h1>
                 <p>Total number of posts: <span className="profile-number">{totalPosts}</span></p>
                 <p>Total views of posts: <span className="profile-number">{totalViews}</span></p>
+                <p>Last logged: <span className="profile-number">{userProfile ? userProfile.lastLogged : "No data"}</span></p>
+                <p>Login count: <span className="profile-number">{userProfile ? userProfile.loginCount : "No data"}</span></p>
             </div>
             <div className="profile-last-best-posts">
                 {lastPost ? 

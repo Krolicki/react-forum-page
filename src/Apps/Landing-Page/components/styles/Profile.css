@@ -37,6 +37,7 @@
 .profile-last-best-posts{
     display: grid;
     gap: .5rem;
+    grid-auto-rows: min-content;
 }
 .profile-container .post p{
     line-height: 1rem;

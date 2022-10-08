@@ -15,6 +15,7 @@ function useLogin(){
     const [, setCookie] = useCookies(['user'])
 
     const successfullyLoged = async (uid, user, from) =>{
+        let loginCount = 0
         await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/users/${user.toLowerCase()}.json?auth=${uid}`)
         .then((response) => {
             if(response.ok){
@@ -29,6 +30,10 @@ function useLogin(){
                 let expires = new Date()
                 expires.setTime(expires.getTime() + (10 * 60000)) // 10 minutes
                 setCookie('user', response.username, { path: '/',  expires})
+                if(response?.loginCount)
+                    loginCount += response.loginCount + 1
+                else
+                    loginCount = 1 
                 navigate(from, {replace: true})
             }
             else{
@@ -43,6 +48,27 @@ function useLogin(){
             else{
                 setError("Login failed")
             }
+        })
+        let date = new Date()
+        let lastLogged = `${('0'+date.getDate()).slice(-2)}-${('0'+(date.getMonth()+1)).slice(-2)}-${date.getFullYear()} ${('0'+date.getHours()).slice(-2)}:${('0'+date.getMinutes()).slice(-2)}`
+        fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/users/${user.toLowerCase()}.json?auth=${uid}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                loginCount,
+                lastLogged
+            })
+        })
+        .then(respsonse => {
+            if(respsonse.ok){
+                return respsonse
+            }
+            throw respsonse
+        })
+        .catch(err => {
+            console.log("Updating profile failed... " + err)
         })
     }
 
