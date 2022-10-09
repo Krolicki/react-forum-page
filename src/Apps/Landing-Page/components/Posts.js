@@ -110,7 +110,7 @@ export const Posts = () => {
                                 </div>
                                 <p className='post-desc'>{post.desc}</p>
                                 <div className='post-info'>
-                                    {post.user !==undefined ? <p>Posted by: {post.user}</p> : <></>}
+                                    {post.user !==undefined ? <p>Posted by: <Link to={`/profile/${post.user}`}>{post.user}</Link></p> : <></>}
                                     <p>Views: {post.views !==undefined ? post.views : "0"}</p>
                                 </div>
                                 <Link to={`/post/${post.id}`} state={currentPage}>
@@ -144,7 +144,7 @@ export const Posts = () => {
                                 </div>
                                 <p className='post-desc'>{post.desc}</p>
                                 <div className='post-info'>
-                                    {post.user !==undefined ? <p>Posted by: {post.user}</p> : <></>}
+                                    {post.user !==undefined ? <p>Posted by: <Link to={`/profile/${post.user}`}>{post.user}</Link></p> : <></>}
                                     <p>Views: {post.views !==undefined ? post.views : "0"}</p>
                                 </div>
                                 <Link to={`/post/${post.id}`} state={currentPage}>

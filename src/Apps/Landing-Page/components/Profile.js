@@ -1,5 +1,5 @@
 import useAuth from "../hooks/useAuth"
-import { Link, useOutletContext } from "react-router-dom"
+import { Link, useOutletContext, useParams } from "react-router-dom"
 import "./styles/Profile.css"
 import './styles/Posts.css'
 import { useEffect, useState } from "react"
@@ -8,7 +8,8 @@ import { Pagination } from "./Pagination"
 import { FiArrowLeft } from "react-icons/fi"
 
 export const Profile = () => {
-    const {auth} = useAuth()
+    //const {auth} = useAuth()
+    const {username} = useParams()
     const uid = useOutletContext()
     const [loading, setLoading] = useState(true)
 
@@ -27,7 +28,7 @@ export const Profile = () => {
     useEffect(()=>{
         const getUserProfile = async () => {
             setLoading(true)
-            const postsFromAPI = await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts.json?orderBy=%22user%22&equalTo=%22${auth.user}%22&auth=${uid}`)
+            const postsFromAPI = await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts.json?orderBy=%22user%22&equalTo=%22${username}%22&auth=${uid}`)
                 .then(response => {
                     if (response.ok)
                         return response.json()
@@ -39,7 +40,7 @@ export const Profile = () => {
                 .catch((err) => {
                     console.log(err)
                 })
-                const userProfileFromAPI = await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/users/${auth.user.toLowerCase()}.json?auth=${uid}`)
+                const userProfileFromAPI = await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/users/${username.toLowerCase()}.json?auth=${uid}`)
                 .then(response => {
                     if (response.ok)
                         return response.json()
@@ -50,7 +51,7 @@ export const Profile = () => {
                 })
                 .catch((err) => {
                     console.log(err)
-                }) 
+                })
                 setUserProfile(userProfileFromAPI)
                 setAllUserPosts(postsFromAPI)
                 let total = postsFromAPI.length
@@ -71,6 +72,7 @@ export const Profile = () => {
                 setLoading(false)
         }
         getUserProfile()
+        window.scrollTo(0, 0)
     },[])
 
     if (loading) {
@@ -96,9 +98,9 @@ export const Profile = () => {
                         <span className="profile-back" onClick={()=>setShowAllPosts(false)}>
                             <FiArrowLeft size={25} /><p>Back to profile</p>
                         </span>
-                        <Link to="/newpost"><button className="profile-button">New Post</button></Link>
+                        {/* <Link to="/newpost"><button className="profile-button">New Post</button></Link> */}
                     </span>
-                    <h1 className="profile-allposts-title">{auth.user} posts ({totalPosts})</h1>
+                    <h1 className="profile-allposts-title">{username} posts ({totalPosts})</h1>
                     <section className='posts'>
                         {currentPosts.map(post => {
                             if(post === null)
@@ -141,11 +143,12 @@ export const Profile = () => {
     return(
         <div className="profile-container">
             <div className="profile-header">
-                <h1>User: {auth.user}</h1>
+                <h1>User: {username}</h1>
                 <p>Total number of posts: <span className="profile-number">{totalPosts}</span></p>
                 <p>Total views of posts: <span className="profile-number">{totalViews}</span></p>
-                <p>Last logged: <span className="profile-number">{userProfile ? userProfile.lastLogged : "No data"}</span></p>
-                <p>Login count: <span className="profile-number">{userProfile ? userProfile.loginCount : "No data"}</span></p>
+                <p>Registered: <span className="profile-number">{userProfile.registered}</span></p>
+                <p>Last logged: <span className="profile-number">{userProfile.lastLogged}</span></p>
+                <p>Login count: <span className="profile-number">{userProfile.loginCount}</span></p>
             </div>
             <div className="profile-last-best-posts">
                 {lastPost ? 
@@ -164,7 +167,6 @@ export const Profile = () => {
                                 </div>
                                 <p className='post-desc'>{lastPost.desc}</p>
                                 <div className='post-info'>
-                                    {lastPost.user !==undefined ? <p>Posted by: {lastPost.user}</p> : <></>}
                                     <p>Views: {lastPost.views !==undefined ? lastPost.views : "0"}</p>
                                 </div>
                                 <Link to={`/post/${lastPost.id}`}>
@@ -190,7 +192,6 @@ export const Profile = () => {
                                 </div>
                                 <p className='post-desc'>{bestPost.desc}</p>
                                 <div className='post-info'>
-                                    {bestPost.user !==undefined ? <p>Posted by: {bestPost.user}</p> : <></>}
                                     <p>Views: {bestPost.views !==undefined ? bestPost.views : "0"}</p>
                                 </div>
                                 <Link to={`/post/${bestPost.id}`}>
@@ -207,9 +208,7 @@ export const Profile = () => {
                     :<></>}
             </div>
             <div className="profile-buttons">
-                    <button className="profile-button" onClick={()=> setShowAllPosts(true)}>Show all my posts</button>
-                    <button className="profile-button">button2</button>
-                    <button className="profile-button">button3</button>
+                    <button className="profile-button" onClick={()=> setShowAllPosts(true)}>Show all {username} posts</button>
             </div>
             
         </div>

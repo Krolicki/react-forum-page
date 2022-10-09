@@ -99,8 +99,10 @@ export const Post = () => {
                         }  
                     </div>
                     <p className='post-in-desc'>{post.desc}</p>
-                    {post.user !==undefined ? <p>Posted by: {post.user}</p> : <></>}
-                    <p>Views: {post.views !==undefined ? post.views : "0"}</p>
+                    <div className='post-info'>
+                        {post.user !==undefined ? <p>Posted by: <Link to={`/profile/${post.user}`}>{post.user}</Link></p> : <></>}
+                        <p>Views: {post.views !==undefined ? post.views : "0"}</p>
+                    </div>
                 </div>
                 <p className='post-content'>{post.content}</p>
                 <div className="post-options">

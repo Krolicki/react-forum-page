@@ -100,6 +100,18 @@
 
 .post-info{
     margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.post-info a{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: bold;
+}
+.post-info a:hover{
+    text-decoration: underline;
 }
 
 .post-content{

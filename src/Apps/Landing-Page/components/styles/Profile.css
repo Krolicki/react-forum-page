@@ -16,7 +16,7 @@
     position: absolute;
     bottom: -1rem;
     left: 0;
-    width: 50%;
+    width: 90%;
     height: 2px;
     background: linear-gradient(90deg, rgb(55, 55, 80) 0%,  rgb(11, 47, 79) 100%);
 }
@@ -32,12 +32,17 @@
 }
 .profile-span >p{
     text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .profile-last-best-posts{
     display: grid;
     gap: .5rem;
     grid-auto-rows: min-content;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
 }
 .profile-container .post p{
     line-height: 1rem;

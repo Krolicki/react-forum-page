@@ -54,7 +54,7 @@ export const LandingPage = () => {
                                 <Route path="/newpost" element={<NewPost />} />
                                 <Route path="/editpost/:id" element={<EditPost />} />
                                 <Route path="/changepassword" element={<ChangePassword />} />
-                                <Route path="/profile" element={<Profile />} />
+                                <Route path="/profile/:username" element={<Profile />} />
                             </Route>
                             <Route path="/about" element={
                                 <About />

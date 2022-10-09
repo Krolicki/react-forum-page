@@ -49,6 +49,8 @@ export const Register = () =>{
     },[user, pwd, matchPwd])
 
     const createUserInfo = async (uid, email) => {
+        let date = new Date()
+        let now = `${('0'+date.getDate()).slice(-2)}-${('0'+(date.getMonth()+1)).slice(-2)}-${date.getFullYear()} ${('0'+date.getHours()).slice(-2)}:${('0'+date.getMinutes()).slice(-2)}`
         await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/users/${user.toLowerCase()}.json?auth=${uid}`, {
             method: 'PUT',
             headers: {
@@ -57,6 +59,7 @@ export const Register = () =>{
             body: JSON.stringify({
                 username: user,
                 email,
+                registered: now
             })
         })
         .then((response) => {

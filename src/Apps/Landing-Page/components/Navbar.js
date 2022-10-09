@@ -70,7 +70,7 @@ export const Navbar = ({navbarItems}) => {
                     <p onClick={()=>{
                         setShowUserMenu(false)
                         setMenuClick(false)
-                        navigate("/profile")
+                        navigate(`/profile/${auth.user}`)
                     }}>
                         My profile
                     </p>
