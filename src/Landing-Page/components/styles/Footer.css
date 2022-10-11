@@ -4,6 +4,8 @@ footer{
     margin: 0;
     padding: 5vh 5vw;
     background: linear-gradient(90deg, rgb(55, 55, 80) 0%,  rgb(11, 47, 79) 100%);
+    color: white;
+    text-align: center;
 }
 
 .footer-logo{
@@ -59,7 +61,6 @@ footer{
     margin-bottom: 15px;
     padding: 10px;
     max-width: 20vw;
-
 }
 
 .footer-newsletter{

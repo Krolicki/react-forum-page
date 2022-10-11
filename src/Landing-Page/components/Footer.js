@@ -75,7 +75,7 @@ export const Footer = () =>{
 
     return(
         <footer>
-            <div>
+            <div className='footer-logo-wraper'>
                 <Link to="/" className="footer-logo">
                     LandingPage
                 </Link>  

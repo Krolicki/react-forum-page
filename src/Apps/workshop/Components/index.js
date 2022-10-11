@@ -1,7 +1,0 @@
-export {Header} from './Header'
-export {Counter} from './Counter'
-export {Footer} from './Footer'
-export {Navigation} from './Navigation'
-export {Content} from './Content'
-export {MenuItems} from './MenuItems'
-export {Loading} from './Loading'
