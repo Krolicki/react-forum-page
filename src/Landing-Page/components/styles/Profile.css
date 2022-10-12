@@ -92,6 +92,32 @@
     cursor: pointer;
 }
 
+.not-found h2{
+    font-size: 5rem;
+}
+
+.not-found h3{
+    font-size: 2rem;
+    padding-left: 2rem;
+}
+
+.not-found button{
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: rgb(41, 41, 41);
+    color: white;
+    margin-left: 4rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: opacity .25s ease-out;
+}
+
+.not-found button:hover{
+    opacity: .9;
+}
+
 
 @media screen and (min-width: 920px){
     .profile-container{

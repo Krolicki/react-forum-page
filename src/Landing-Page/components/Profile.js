@@ -46,9 +46,6 @@ export const Profile = () => {
                         return response.json()
                     throw response
                 })
-                .then(response=>{
-                    return response
-                })
                 .catch((err) => {
                     console.log(err)
                 })
@@ -140,15 +137,32 @@ export const Profile = () => {
         )
     }
 
+    if(userProfile === null){
+        return(
+            <div className="profile-container">
+                <div className="profile-header not-found">
+                    <h2>Ooops!</h2>
+                    <h3>User {username} not found</h3>
+                    <Link to={`/`}>
+                        <button type="button">Go to home page</button>
+                    </Link>
+                </div>
+            </div>
+        )
+    }
+
     return(
         <div className="profile-container">
             <div className="profile-header">
                 <h1>User: {username}</h1>
                 <p>Total number of posts: <span className="profile-number">{totalPosts}</span></p>
                 <p>Total views of posts: <span className="profile-number">{totalViews}</span></p>
+                {userProfile ? <>
                 <p>Registered: <span className="profile-number">{userProfile.registered}</span></p>
                 <p>Last logged: <span className="profile-number">{userProfile.lastLogged}</span></p>
                 <p>Login count: <span className="profile-number">{userProfile.loginCount}</span></p>
+                </>
+                : <></>}
             </div>
             <div className="profile-last-best-posts">
                 {lastPost ? 

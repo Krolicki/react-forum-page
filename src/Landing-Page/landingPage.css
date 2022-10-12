@@ -14,3 +14,21 @@
 h1, h2, h3{
     font-weight: 400;
 }
+::-webkit-scrollbar {
+    width: .4vw;
+}
+::-webkit-scrollbar-track {
+    background: black;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(35, 175, 173);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(28, 139, 138);
+    cursor: pointer;
+  }
+  @supports(scrollbar-color: black white){
+    *{
+        scrollbar-color: rgb(35, 175, 173) rgba(255, 255, 255, 0);
+    }
+  }
