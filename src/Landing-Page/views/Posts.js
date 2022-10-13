@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useOutletContext } from 'react-router-dom'
-import { Loader } from './Loader'
-import { Pagination } from './Pagination'
+import { Loader, Pagination } from '../components'
 import './styles/Posts.css'
 
 export const Posts = () => {

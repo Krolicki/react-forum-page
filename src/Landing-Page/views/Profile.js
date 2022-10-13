@@ -3,8 +3,7 @@ import { Link, useOutletContext, useParams } from "react-router-dom"
 import "./styles/Profile.css"
 import './styles/Posts.css'
 import { useEffect, useState } from "react"
-import { Loader } from "./Loader"
-import { Pagination } from "./Pagination"
+import { Loader, Pagination } from "../components"
 import { FiArrowLeft } from "react-icons/fi"
 
 export const Profile = () => {
@@ -222,7 +221,7 @@ export const Profile = () => {
                     :<></>}
             </div>
             <div className="profile-buttons">
-                    <button className="profile-button" onClick={()=> setShowAllPosts(true)}>Show all {username} posts</button>
+                    <button className="profile-button" onClick={()=> {setShowAllPosts(true); window.scrollTo(0, 0)}}>Show all {username} posts</button>
             </div>
             
         </div>

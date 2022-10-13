@@ -4,7 +4,7 @@ import { useAddView } from "../hooks/useAddView"
 import { useGetPost } from "../hooks/useGetPost"
 import "./styles/Post.css"
 import "./styles/Posts.css"
-import { Loader } from "./Loader"
+import { Loader } from "../components"
 import useAuth from "../hooks/useAuth"
 
 export const Post = () => {

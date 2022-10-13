@@ -38,6 +38,7 @@ export const ChangePassword = () => {
             setUser(auth.user)
         }
         oldPassRef.current.focus()
+        window.scrollTo(0, 0)
     },[])
 
 

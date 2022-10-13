@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom"
 import { useEffect, useRef, useState } from 'react'
 import { useGetPost } from '../hooks/useGetPost'
 import { useOutletContext, useNavigate } from 'react-router-dom'
-import { Loader } from './Loader'
+import { Loader } from '../components'
 import useAuth from "../hooks/useAuth"
 
 export const EditPost = () => {
