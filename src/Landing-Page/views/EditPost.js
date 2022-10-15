@@ -10,8 +10,6 @@ import useAuth from "../hooks/useAuth"
 export const EditPost = () => {
     const {id} = useParams()
     const [title, setTitle] = useState('')
-    const [desc, setDesc] = useState('')
-    const [content, setContent] = useState('')
     const [edited, setEdited] = useState(false)
     const [sending, setSending] = useState(false)
     const [errMsg, setErrMsg] = useState('')
@@ -24,15 +22,17 @@ export const EditPost = () => {
 
     const errRef = useRef()
     const titleRef = useRef()
+    const descRef = useRef()
+    const contentRef = useRef()
 
     useEffect(()=>{
         titleRef.current.focus()
     },[])
 
     useEffect(()=>{
-        setTitle(post.title)
-        setDesc(post.desc)
-        setContent(post.content)
+        titleRef.current.value = post.title
+        descRef.current.value = post.desc
+        contentRef.current.value = post.content
         if(auth.user !== post.user && post.user !== undefined)
             navigate("/posts", {replace: true})
         window.scrollTo(0, 0)
@@ -44,6 +44,7 @@ export const EditPost = () => {
         setErrMsg('')
 
         if(auth.user === post.user){
+            setTitle(titleRef.current.value)
             let date = new Date()
             let edit = `${('0'+date.getDate()).slice(-2)}-${('0'+(date.getMonth()+1)).slice(-2)}-${date.getFullYear()} ${('0'+date.getHours()).slice(-2)}:${('0'+date.getMinutes()).slice(-2)}`
             await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts/${post.id}.json?auth=${uid}`, {
@@ -52,9 +53,9 @@ export const EditPost = () => {
                     'Content-type': 'application/json'
                 },
                 body: JSON.stringify({
-                    title, 
-                    desc,
-                    content,
+                    title: titleRef.current.value, 
+                    desc: descRef.current.value,
+                    content: contentRef.current.value,
                     edit
                 })
             })
@@ -133,8 +134,7 @@ export const EditPost = () => {
                             </label>
                             <input 
                                 id="title"
-                                onChange={(e) => {setTitle(e.target.value)}} 
-                                value={title || 'Loading title...'}
+                                onChange={() => {if(errMsg !== '') setErrMsg('')}} 
                                 autoComplete="off"
                                 ref={titleRef}
                                 required
@@ -144,9 +144,9 @@ export const EditPost = () => {
                             </label>
                             <input 
                                 id="description" 
-                                onChange={(e) => {setDesc(e.target.value)}}
-                                value={desc || 'Loading description...'} 
+                                onChange={() => {if(errMsg !== '') setErrMsg('')}}
                                 autoComplete="off"
+                                ref={descRef}
                                 required
                             />
                         </div>
@@ -156,9 +156,9 @@ export const EditPost = () => {
                         <textarea 
                             id="content" 
                             className='post-content' 
-                            onChange={(e) => {setContent(e.target.value)}}
-                            value={content || ''} 
+                            onChange={() => {if(errMsg !== '') setErrMsg('')}}
                             autoComplete="off"
+                            ref={contentRef}
                             required
                         />
                         <div className="post-options">

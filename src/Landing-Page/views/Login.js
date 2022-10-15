@@ -10,10 +10,9 @@ export const Login = () => {
     const from = location.state?.from?.pathname || "/"
 
     const userRef = useRef()
+    const passRef = useRef()
     const errRef = useRef()
 
-    const [user, setUser] = useState('')
-    const [pwd, setPwd] = useState('')
     const [errMsg, setErrMsg] = useState('')
     
     useEffect(()=>{
@@ -22,16 +21,12 @@ export const Login = () => {
     },[])
 
     useEffect(()=>{
-        setErrMsg('')
-    },[user, pwd])
-
-    useEffect(()=>{
         setErrMsg(error)
     },[error])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        login(user, pwd , from)
+        login(userRef.current.value, passRef.current.value , from)
     }
 
     return (
@@ -49,21 +44,18 @@ export const Login = () => {
                             id="username"
                             ref={userRef}
                             autoComplete="off"
-                            onChange={(e) => {setUser(e.target.value)}}
-                            value={user}
+                            onChange={() => {if(errMsg !== '') setErrMsg('')}}
                             required
                         />
-
-
                         <label htmlFor='password'>
                             Password:
                         </label>
                         <input 
                             type="password"
                             id="password"
-                            onChange={(e) => {setPwd(e.target.value)}}
+                            ref={passRef}
+                            onChange={() => {if(errMsg !== '') setErrMsg('')}}
                             required
-                            value={pwd}
                         />
 
                         <button >

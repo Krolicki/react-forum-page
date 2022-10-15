@@ -5,8 +5,6 @@ import useAuth from "../hooks/useAuth";
 
 export const NewPost = () => {
     const [title, setTitle] = useState('')
-    const [desc, setDesc] = useState('')
-    const [content, setContent] = useState('')
 
     const [sending, setSending] = useState(false)
     const [posted, setPosted] = useState(false)
@@ -15,6 +13,8 @@ export const NewPost = () => {
     const [newID, setNewID] = useState(0)
 
     const titleRef = useRef()
+    const descRef = useRef()
+    const contentRef = useRef()
     const errRef = useRef()
 
     const {auth} = useAuth()
@@ -46,16 +46,17 @@ export const NewPost = () => {
         if(Object.values(lastPost)[0] !== undefined){
             newPostID = (parseInt(Object.values(lastPost)[0].id)+1)
         }
-        if(newPostID !== -1)
+        if(newPostID !== -1){
+            setTitle(titleRef.current.value)
             await fetch(`https://react-workshop-eba4b-default-rtdb.europe-west1.firebasedatabase.app/posts/${newPostID}.json?auth=${uid}`, {
                             method: 'PUT',
                             headers: {
                                 'Content-type': 'application/json'
                             },
                             body: JSON.stringify({
-                                title, 
-                                desc,
-                                content, 
+                                title: titleRef.current.value, 
+                                desc: descRef.current.value,
+                                content: contentRef.current.value, 
                                 date: postDate, 
                                 user: auth.user,
                                 views: 0,
@@ -81,6 +82,7 @@ export const NewPost = () => {
                         setErrMsg("Sending post failed")
                     }
                 })
+            }
             else{
                 setErrMsg("Sending post failed")
             }
@@ -111,8 +113,7 @@ export const NewPost = () => {
                         id="title"
                         ref={titleRef}
                         autoComplete="off"
-                        onChange={(e) => {setTitle(e.target.value)}}
-                        value={title}
+                        onChange={() => {if(errMsg !== '') setErrMsg('')}}
                         required
                     />
                     <label htmlFor='desc'>
@@ -122,8 +123,8 @@ export const NewPost = () => {
                         type="text"
                         id="desc"
                         autoComplete="off"
-                        onChange={(e) => {setDesc(e.target.value)}}
-                        value={desc}
+                        ref={descRef}
+                        onChange={() => {if(errMsg !== '') setErrMsg('')}}
                         required
                     />
                     <label htmlFor='content'>
@@ -133,8 +134,8 @@ export const NewPost = () => {
                         type="text"
                         id="content"
                         autoComplete="off"
-                        onChange={(e) => {setContent(e.target.value)}}
-                        value={content}
+                        ref={contentRef}
+                        onChange={() => {if(errMsg !== '') setErrMsg('')}}
                         required
                     />
                     <button>Submit</button>

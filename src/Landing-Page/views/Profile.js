@@ -69,7 +69,7 @@ export const Profile = () => {
         }
         getUserProfile()
         window.scrollTo(0, 0)
-    },[])
+    },[username])
 
     if (loading) {
         return <Loader title={`Loading profile...`} />
