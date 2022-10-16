@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useLocation, useOutletContext } from 'react-router-dom'
 import { Loader, Pagination } from '../components'
 import './styles/Posts.css'
+import {BsSearch} from "react-icons/bs"
 
 export const Posts = () => {
     const [posts, setPosts] = useState([])
@@ -90,7 +91,11 @@ export const Posts = () => {
                     paginate={paginate}
                     currentPage={currentPage}
                 />
-                <Link to="/newpost" className='new-post-button'><button>New Post</button></Link>
+                <div className='posts-above'>
+                    <input type="text" className='posts-find' placeholder='Find post...' />
+                    <BsSearch size={25} className="posts-find-icon" />
+                    <Link to="/newpost" className='new-post-button'><button>New Post</button></Link>
+                </div>
                 <section className='posts'>
                     {currentPosts.map(post => {
                         if(post === null)

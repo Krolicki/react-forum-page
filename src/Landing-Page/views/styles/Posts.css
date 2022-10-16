@@ -120,6 +120,29 @@
     white-space: pre-wrap;
 }
 
+.posts-above{
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.posts-find{
+    width: 70%;
+    height: 100%;
+    padding: 5px;
+    font-size: 1.3rem;
+    background-color: rgb(221, 239, 255);
+    border: 1px solid black;
+    margin-right: 10px;
+}
+
+.posts-find-icon{
+    cursor: pointer;
+    
+}
+
 .post button,
 .new-post-button button{
     padding: 12px;
@@ -135,8 +158,6 @@
 }
 
 .new-post-button{
-    display: block;
-    margin-bottom: 20px;
     margin-left: auto;
 
 }
