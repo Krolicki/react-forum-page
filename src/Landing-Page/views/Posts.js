@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation, useOutletContext } from 'react-router-dom'
 import { Loader, Pagination } from '../components'
 import './styles/Posts.css'
 import {BsSearch} from "react-icons/bs"
+import {FiX} from "react-icons/fi"
 
 export const Posts = () => {
     const [posts, setPosts] = useState([])
@@ -11,6 +12,9 @@ export const Posts = () => {
     const [postsPerPage] = useState(5)
     const query = useLocation()
     const uid = useOutletContext()
+    const findRef = useRef()
+    const [searchCount, setSearchCount] = useState(null)
+    const [serchPosts, setSearchPosts] = useState(null)
 
     useEffect(() => {
         const getPosts = async () => {
@@ -41,7 +45,7 @@ export const Posts = () => {
 
     const indexLastPost = currentPage * postsPerPage
     const indexFirstPost = indexLastPost - postsPerPage
-    const currentPosts = posts.slice(indexFirstPost, indexLastPost)
+    const currentPosts = serchPosts === null ? posts.slice(indexFirstPost, indexLastPost) : serchPosts.slice(indexFirstPost, indexLastPost)
 
     const paginate = (num) => setCurentPage(num)
 
@@ -78,6 +82,24 @@ export const Posts = () => {
         setMostViewed([firstID, secondID, thirdID])
     }
 
+    const findPost = () => {
+        let tempPostsList = []
+        let searchQuery = findRef.current.value
+        if(searchQuery === ""){
+            setSearchCount(null)
+            setSearchPosts(null)
+            return
+        }
+        posts.forEach(post =>{
+            if(post.title.toLowerCase().includes(searchQuery) || post.desc.toLowerCase().includes(searchQuery)){
+                tempPostsList.push(post)
+            }
+        })
+        setSearchCount(tempPostsList.length)
+        setCurentPage(1)
+        setSearchPosts(tempPostsList)
+    }
+
     if (loading) {
         return <Loader title={"Loading posts..."} />
     }
@@ -87,15 +109,17 @@ export const Posts = () => {
             <section className='posts-container'>
                 <Pagination
                     postsPerPage={postsPerPage} 
-                    totalPosts={posts.length} 
+                    totalPosts={serchPosts === null ? posts.length : serchPosts.length} 
                     paginate={paginate}
                     currentPage={currentPage}
                 />
                 <div className='posts-above'>
-                    <input type="text" className='posts-find' placeholder='Find post...' />
-                    <BsSearch size={25} className="posts-find-icon" />
+                    <input type="text" className='posts-find' ref={findRef} onKeyDown={e => {if(e.key === 'Enter') findPost()}} placeholder='Find post...' />
+                    <BsSearch size={25} className="posts-find-icon" onClick={findPost} />
+                    {searchCount !== null ? <FiX size={35} className="posts-find-icon" onClick={()=>{findRef.current.value = ""; findPost()}} /> : <></>}
                     <Link to="/newpost" className='new-post-button'><button>New Post</button></Link>
                 </div>
+                {searchCount !== null ? <p className='search-count'>{searchCount} results</p> : <></>}
                 <section className='posts'>
                     {currentPosts.map(post => {
                         if(post === null)
@@ -126,7 +150,7 @@ export const Posts = () => {
                 </section>
                 <Pagination
                     postsPerPage={postsPerPage} 
-                    totalPosts={posts.length} 
+                    totalPosts={serchPosts === null ? posts.length : serchPosts.length} 
                     paginate={paginate} 
                     currentPage={currentPage}
                 />

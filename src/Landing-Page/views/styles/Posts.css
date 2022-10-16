@@ -143,6 +143,11 @@
     
 }
 
+.search-count{
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
 .post button,
 .new-post-button button{
     padding: 12px;
