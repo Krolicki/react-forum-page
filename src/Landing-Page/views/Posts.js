@@ -13,6 +13,7 @@ export const Posts = () => {
     const query = useLocation()
     const uid = useOutletContext()
     const findRef = useRef()
+    const [searchQuery, setSearchQuery] = useState("")
     const [searchCount, setSearchCount] = useState(null)
     const [serchPosts, setSearchPosts] = useState(null)
 
@@ -39,7 +40,9 @@ export const Posts = () => {
         getPosts()
         if(query.state?.page !== undefined && query.state?.page !== null)
             setCurentPage(query.state?.page)
-
+        if(query.state?.find !== undefined && query.state?.find !== null && query.state?.find !== ""){
+            setSearchQuery(query.state?.find)
+        }
         window.scrollTo(0, 0)
     }, [])
 
@@ -84,14 +87,14 @@ export const Posts = () => {
 
     const findPost = () => {
         let tempPostsList = []
-        let searchQuery = findRef.current.value
-        if(searchQuery === ""){
+        let findQuery = findRef.current.value
+        if(findQuery === ""){
             setSearchCount(null)
             setSearchPosts(null)
             return
         }
         posts.forEach(post =>{
-            if(post.title.toLowerCase().includes(searchQuery) || post.desc.toLowerCase().includes(searchQuery)){
+            if(post.title.toLowerCase().includes(findQuery) || post.desc.toLowerCase().includes(findQuery)){
                 tempPostsList.push(post)
             }
         })
@@ -114,9 +117,9 @@ export const Posts = () => {
                     currentPage={currentPage}
                 />
                 <div className='posts-above'>
-                    <input type="text" className='posts-find' ref={findRef} onKeyDown={e => {if(e.key === 'Enter') findPost()}} placeholder='Find post...' />
+                    <input type="text" onChange={(e) => setSearchQuery(e.target.value)} value={searchQuery} className='posts-find' ref={findRef} onKeyDown={e => {if(e.key === 'Enter') findPost()}} placeholder='Find post...' />
                     <BsSearch size={25} className="posts-find-icon" onClick={findPost} />
-                    {searchCount !== null ? <FiX size={35} className="posts-find-icon" onClick={()=>{findRef.current.value = ""; findPost()}} /> : <></>}
+                    {searchQuery !== "" ? <FiX size={35} className="posts-find-icon" onClick={()=>{setSearchQuery(""); findRef.current.value = ""; findPost()}} /> : <></>}
                     <Link to="/newpost" className='new-post-button'><button>New Post</button></Link>
                 </div>
                 {searchCount !== null ? <p className='search-count'>{searchCount} results</p> : <></>}
@@ -141,7 +144,7 @@ export const Posts = () => {
                                     {post.user !==undefined ? <p>Posted by: <Link to={`/profile/${post.user}`}>{post.user}</Link></p> : <></>}
                                     <p>Views: {post.views !==undefined ? post.views : "0"}</p>
                                 </div>
-                                <Link to={`/post/${post.id}`} state={currentPage}>
+                                <Link to={`/post/${post.id}`} state={{page: currentPage, find: searchQuery}} >
                                     <button type='button'>Show post</button>
                                 </Link>
                             </div>

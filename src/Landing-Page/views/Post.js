@@ -106,7 +106,7 @@ export const Post = () => {
                 </div>
                 <p className='post-content'>{post.content}</p>
                 <div className="post-options">
-                    <Link to={`/posts`} state={{page: query.state}}>
+                    <Link to={`/posts`} state={{page: query.state.page, find: query.state.find}}>
                         <button type="button">Back to Posts</button>
                     </Link>
                     <span>
