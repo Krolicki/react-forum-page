@@ -117,9 +117,11 @@ export const Posts = () => {
                     currentPage={currentPage}
                 />
                 <div className='posts-above'>
-                    <input type="text" onChange={(e) => setSearchQuery(e.target.value)} value={searchQuery} className='posts-find' ref={findRef} onKeyDown={e => {if(e.key === 'Enter') findPost()}} placeholder='Find post...' />
-                    <BsSearch size={25} className="posts-find-icon" onClick={findPost} />
-                    {searchQuery !== "" ? <FiX size={35} className="posts-find-icon" onClick={()=>{setSearchQuery(""); findRef.current.value = ""; findPost()}} /> : <></>}
+                    <span>
+                        <input type="text" onChange={(e) => setSearchQuery(e.target.value)} value={searchQuery} className='posts-find' ref={findRef} onKeyDown={(e) => {if(e.key === 'Enter') findPost()}} placeholder='Find post...' />
+                        <BsSearch size={25} className="posts-find-icon" onClick={findPost} />
+                        {searchQuery !== "" ? <FiX size={35} className="posts-find-icon" onClick={()=>{setSearchQuery(""); findRef.current.value = ""; findPost()}} /> : <></>}
+                    </span>
                     <Link to="/newpost" className='new-post-button'><button>New Post</button></Link>
                 </div>
                 {searchCount !== null ? <p className='search-count'>{searchCount} results</p> : <></>}
